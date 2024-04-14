@@ -1,0 +1,57 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{regras}[2022/05/30 v1.0 Regras]
+\ProcessOptions\relax
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES ADICIONAIS UTEIS
+% --- 
+\usepackage{pdfpages}			% para incluir arquivos pdf no documento
+\usepackage[style=iso]{datetime2}
+\usepackage[owncaptions,tablegrid]{vhistory}
+\renewcommand{\imprimirautor}{
+\begin{tabular}{lr}
+\end{tabular}
+}
+
+\disciplina{}
+
+\preambulo{Projeto apresentado como requisito para
+aprovação na disciplina de \codigoDisciplina}
+\data{\vhCurrentDate}
+
+\renewcommand{\orientadorname}{}
+
+% Depois podemos definir alguma forma de mostras as justificativas
+\newcommand{\justificativa}[1]{\todo[inline]{JUSTIFICATIVA : #1}}
+\newcommand{\melhorar}[1]{\todo[inline]{MELHORAR : #1}}
+
+\newcommand{\atividade}[1]{(\autoref{atv-#1})}
+
+\newcommand{\urlmodelosimples}{https://www.overleaf.com/project/58a3a66af9bb74023ba1bd56}
+\newcommand{\urlmodelo}{\url{\urlmodelosimples}}
+
+\newcommand{\urlmodeloApresentacao}{\url{https://www.overleaf.com/project/606fb2f8be5c1d108ec8d237}}
+
+
+% Para facilitar mudanças no site a página 404 tem um redirecionamento pelas chaves
+% utiliza diretamente esse sistema de redirecionamento
+\newcommand{\dicasIvan}[1]{\sloppy\href{https://dicas.ivanfm.com/404.html?key=#1}{https://dicas.ivanfm.com/#1}}
+
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+        %pagebackref=true,
+        pdftitle={\@title}, 
+        pdfauthor={\@author},
+        pdfsubject={\imprimirpreambulo},
+        pdfcreator={LaTeX with abnTeX2 using IFSP model},
+        pdfkeywords={abnt}{latex}{abntex}{abntex2}{IFSP}{\ifspprefixo}{trabalho acadêmico}, 
+        colorlinks=true,            % false: boxed links; true: colored links
+        linkcolor=blue,             % color of internal links
+        citecolor=blue,             % color of links to bibliography
+        filecolor=magenta,              % color of file links
+        urlcolor=blue,
+        bookmarksdepth=4
+}
+\makeatother

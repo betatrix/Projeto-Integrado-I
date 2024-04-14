@@ -1,0 +1,45 @@
+% ----------------------------------------------------------
+% Anexos
+% Documentos gerados por outros autores
+% ----------------------------------------------------------
+
+% ---
+% Inicia os anexos
+% ---
+\begin{anexosenv}
+
+% Imprime uma página indicando o início dos anexos
+\partanexos
+
+% ---
+\chapter{Manual todonotes}
+\label{manual-todonotes}
+% ---
+\index{pdf}
+% arquivo completo
+\includepdf[pages=-,frame=true]{anexos/todonotes.pdf}
+
+% ---
+\chapter{Manual pdfpages(parcial)}
+% ---
+\index{pdf}
+% somente algumas páginas
+\includepdf[pages=1-3,frame=false]{anexos/pdfpages.pdf}
+
+% ---
+\chapter{Manual acronym(parcial)}
+% ---
+\index{pdf}
+% somente algumas páginas
+\includepdf[pages=1-3,frame=false]{anexos/acronym.pdf}
+
+
+% ---
+\chapter{Cras non urna sed feugiat cum sociis natoque penatibus}
+% ---
+
+\lipsum[1]
+
+
+
+\end{anexosenv}
