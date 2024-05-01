@@ -1,10 +1,7 @@
 import axios from 'axios';
 
-const API_URL = 'https://projeto-integrado-back-production.up.railway.app';
-
-//tratar url com variaveis de ambiente
-// const API_URL = process.env.REACT_APP_API_URL || 'https://projeto-integrado-back-production.up.railway.app';
-
+ // variável de ambiente:
+ const API_URL = import.meta.env.VITE_API_URL;
 
 // Cadastrar entidade
 export const cadastrarEntidade = async (entidade: string, data: object) => {
