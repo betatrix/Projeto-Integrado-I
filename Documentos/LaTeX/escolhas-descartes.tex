@@ -1,0 +1,42 @@
+\chapter{DECISÕES}
+\label{escolhas-descartes}
+A seguir, justificaremos as escolhas feitas para a elaboração do projeto, incluindo as tecnologias utilizadas e as funcionalidades que optamos por não implementar ou que serão implementadas em versões futuras da aplicação.
+
+\section{Escolhas}
+
+Nesta seção, detalhamos as principais decisões técnicas tomadas durante a elaboração do projeto. Abordamos as razões por trás da seleção das tecnologias utilizadas, destacando os benefícios e vantagens que cada uma oferece para o desenvolvimento, manutenção e escalabilidade da aplicação.
+
+\subsection{Utilização do Java}
+
+A escolha de utilizar Java como a linguagem de programação para o \textit{back-end} foi baseada em sua robustez, segurança e ampla adoção no mercado. Java oferece uma vasta gama de bibliotecas e \textit{frameworks} que facilitam o desenvolvimento de aplicações escaláveis e de alto desempenho. Além disso, sua portabilidade e forte suporte comunitário garantem uma base sólida para a manutenção e evolução contínua do projeto.
+
+\subsection{Utilização do Spring Boot}
+
+O Spring Boot foi escolhido por sua capacidade de simplificar o desenvolvimento de aplicações Java baseadas em Spring. Ele oferece uma configuração mínima, permitindo que os desenvolvedores se concentrem nas funcionalidades da aplicação em vez de se preocupar com a infraestrutura. Além disso, o Spring Boot fornece uma série de ferramentas integradas para monitoramento, segurança e \textit{deploy}, tornando o processo de desenvolvimento mais eficiente e ágil.
+
+\subsection{Utilização do TypeScript}
+
+A adoção do TypeScript foi motivada pela necessidade de aumentar a produtividade e a qualidade do código no desenvolvimento \textit{front-end}. TypeScript, ao adicionar tipagem estática ao JavaScript, ajuda a prevenir erros comuns durante a compilação, melhorando a robustez do código. Além disso, sua integração com ferramentas de desenvolvimento modernas e a capacidade de utilizar recursos mais avançados do JavaScript facilitam a criação de aplicações web complexas e escaláveis.
+
+\subsection{Utilização do React}
+
+O React foi escolhido como a biblioteca principal para a construção da interface do usuário devido à sua eficiência e flexibilidade. Com sua abordagem baseada em componentes, o React permite a criação de interfaces de usuário reutilizáveis e altamente interativas. Além disso, sua forte comunidade e vasta quantidade de recursos e bibliotecas auxiliares tornam o desenvolvimento mais rápido e eficaz, garantindo uma experiência de usuário final mais rica e responsiva.
+
+\section{Descartes}
+
+Durante a fase de elaboração do projeto, decidiu-se descartar a funcionalidade de recomendar cursos e instituições estrangeiras que aceitam a nota do \ac{enem}. A principal razão para essa decisão foi a complexidade adicional envolvida na integração e atualização constante das informações de instituições estrangeiras. Além disso, a maioria dos usuários da plataforma está interessada em oportunidades de educação dentro do Brasil, tornando essa funcionalidade de menor prioridade. Acreditamos que focar exclusivamente em cursos e universidades brasileiras permite uma experiência de usuário mais direcionada, alinhada com os principais objetivos do projeto.
+
+
+\section{Implementações futuras}
+
+Para o desenvolvimento contínuo da plataforma e futuras entregas, estão previstas várias melhorias e novas funcionalidades que irão aprimorar a experiência do usuário e expandir a extensão dos dados disponíveis. Entre essas futuras implementações, destacam-se:
+
+\subsection{Integração com API do e-MEC}
+Uma das principais funcionalidades a serem implementadas é a utilização de uma \ac{api} para buscar dados diretamente no site do e-MEC. Essa integração permitirá que a plataforma acesse e atualize informações de universidades e cursos de forma automática, garantindo que os dados sejam sempre atuais e precisos. A \ac{api} facilitará a obtenção de dados detalhados sobre as instituições de ensino superior, seus cursos oferecidos, localizações, avaliações, entre outros. A atualização dos dados seguirá a regra de negócio estabelecida de atualização semestral, alinhada com as datas de abertura dos processos seletivos das universidades, como o \ac{sisu} e o \ac{prouni}. Dessa forma, garantiremos que as informações disponibilizadas aos usuários estejam sempre atualizadas e em consonância com os períodos de ingresso nas instituições de ensino.
+
+\subsection{Inclusão de Dados de Cursos Técnicos e Outras Instituições}
+Atualmente, a plataforma foca principalmente em cursos de graduação. No entanto, em futuras implementações, pretendemos incluir dados de cursos técnicos e instituições públicas que os ofertem. Isso ampliará o escopo da plataforma, atendendo a uma gama mais ampla de usuários interessados em diferentes níveis e tipos de formação. 
+
+\subsection{Funcionalidades de Busca Avançada}
+Outra melhoria significativa será a implementação de funcionalidades que permitam ao usuário realizar buscas mais rebuscadas e detalhadas nas bases de dados disponíveis. Os usuários poderão refinar suas pesquisas utilizando diversos filtros, como área de conhecimento, políticas públicas oferecidas, avaliação institucional, entre outros critérios específicos. Isso tornará a plataforma mais eficiente e personalizada, facilitando a busca por cursos e instituições que melhor atendam às necessidades e preferências individuais dos usuários.
+

@@ -1,0 +1,98 @@
+{
+    "translation": {
+      "welcome": "Welcome back, ",
+      "login": "Login",
+      "home": "Home",
+      "about": "About",
+      "faq": "FAQ",
+      "testInformation": "Test Information",
+      "test": "Vocacional Test",
+      "university": "Universities",
+  
+      "welcomeText1": "Find the perfect course and college for you!",
+      "welcomeText2": "Get access to our exclusive vocational test and information about",
+      "welcomeText3": "Brazilian universities.",
+      "registerButton": "Register",
+
+      "partner": "Our partners",
+  
+      "informationTitle": "John Holland theory",
+      "informationText": "Our vocational test is based on the studies of psychologist John L. Holland, who developed the Theory of Vocational Types. This theory identifies six main personality types and work environments, known by the acronym RIASEC. When answering our test, your personal characteristics are compared with RIASEC types to identify careers and areas of study that match your profile, increasing the chances of satisfaction and professional success.",
+  
+      "aboutTitle": "About us",
+      "aboutText": "We are VOCCO, a platform designed to guide high school students from the public education network in Brazil, helping them choose their future professional careers. Our name derives from the Latin word vocation.",
+  
+      "faqTitle": "Frequently Asked Questions ",
+      "faqTitleText1": "What is a vocational test?",
+      "faqText1":"A career test is a tool that helps you identify your skills, interests and abilities, suggesting possible careers and areas of study that align with your profile.",
+      "faqTitleText2": "How does the vocational test work?",
+      "faqText2":"The test consists of a series of questions about your interests, skills and preferences. Based on your answers, it generates a report with suggestions for careers and courses that are suitable for you.",
+      "faqTitleText3": "How can I contact a specific university?",
+      "faqText3":"Each university page includes contact details such as address, telephone and email. You can also find links to the universities' official websites.",
+      "faqTitleText4": "How to create an account on the website?",
+      "faqText4":"Click on the 'Register' button in the center of the first page and fill in the form with your personal information.",
+      "faqTitleText5": "How can I save my searches and test results?",
+      "faqText5":"After creating an account, logging in and carrying out a test, you will have the test results saved on your page, accessible at any time.",
+
+      "profileTitle1":"",
+      "profileTitle2":"",
+      "profileTitle3":"",
+      "profileTitle4":"",
+      "profileTitle5":"",
+      "profileTitle6":"",
+
+      "backButton": "Back",
+
+      "loginBackButton": "Home page",
+
+      "loginTitle": "Acess Vocco!",
+      "loginText": "Enter your e-mail and password to access our platform.⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+      "loginField1": "Type your e-mail",
+      "loginField2": "Type your password",
+      "loginRegister1": "Don't have an account?",
+      "loginRegister2": "Register!",
+      "loginRecover": "Forgot your password?",
+      "loginButton": "Login",
+      "loginError": "The e-mail or password entered was not found :(",
+
+      "forgotTitle": "Forgot your password?",
+      "forgotText": "To reset your password, enter your registered e-mail and we will quickly send you a link! Don't forget to check your spam folder ;)",
+      "forgotField": "Type your e-mail",
+      "forgotButton": "Send",
+      "forgotSucess": "Email successfully sent!",
+      "forgotError1": "Enter a valid e-mail!",
+      "forgotError2": "E-mail was not found :(",
+
+      "testIntroTitle": "Before we starting...",
+      "testIntro1": "Our vocational test is inspired by psychologist John L. Holland's theory, known as RIASEC - Realistic, Investigative, Artistic, Social, Enterprising and Conventional.",
+      "testIntro2": "This theory divides people into six different personality types and work environments. When taking the test, your characteristics are compared with these six types to suggest careers and areas of study that match your profile.",
+      "testIntro3": "Furthermore, we use this information to help you find courses and universities that fit your profile, increasing your chances of feeling fulfilled and successful in your professional career.",
+      "testIntroButton": "Start Test",
+      "testInstruction": "Respond to the statements below with how much you identify with each of them.",
+      "testWarningTitle": "Are you sure you want to leave?",
+      "testWarning": "Your current responses will not be saved if you exit now.",
+      "testWarningCancel": "Cancel",
+      "testWarningExit": "Exit",
+
+      "dashboardTitle": "MY TESTS",
+      "dashboardCard1": "TESTS ANSWERED",
+      "dashboardCard2": "MOST RECURRING PROFILES",
+      "dashboardCard2Text": "Discover your profile by taking a test.",
+      "dashboardCard3": "RESULTS",
+      "dashboardCard3Text": "No tests performed.",
+      "dashboardTest1": "Start Test",
+      "dashboardTest2": "Retake Test",
+
+      "dashboardInvestigativo": "Pessoas com este perfil são curiosas, analíticas e gostam de resolver problemas.",
+      "dashboardConvencional": "Pessoas com este perfil são organizadas, metódicas e preferem trabalhar com dados e detalhes.",
+      "dashboardEmpreendedor": "Pessoas com este perfil são líderes naturais, gostam de persuadir e influenciar os outros.",
+      "dashboardRealista": "Pessoas com este perfil são práticas, gostam de trabalhar com as mãos e preferem atividades físicas e mecânicas.",
+      "dashboardArtistico": "Pessoas com este perfil são criativas, gostam de se expressar através de diferentes formas de arte.",
+      "dashboardSocial": "Pessoas com este perfil são comunicativas, gostam de ajudar os outros e preferem atividades que envolvem interação interpessoal.",
+
+      "listInstitutionTitle": "Institutions List",
+      "listInstitutionSearch": "Search Institution"
+
+    }
+  }
+  

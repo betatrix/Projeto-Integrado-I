@@ -1,0 +1,17 @@
+*{
+    background-color: #101840;
+
+    color: tomato;
+    justify-content: space-around;
+    border-radius: 100%;
+
+    width: 100px;
+    box-shadow: #101840;
+    width: 100vh;
+    font-weight: 800;
+    color: rgba(132, 130, 240, 0.1);
+    
+    text-decoration: none;
+    text-align: right;
+    box-sizing: content-box;
+}

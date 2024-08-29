@@ -1,0 +1,97 @@
+{
+    "translation": {
+      "welcome": "Olá, ",
+      "login": "Entrar",
+      "home": "Início",
+      "about": "Sobre",
+      "faq": "FAQ",
+      "testInformation": "Informação do teste",
+      "test": "Teste Vocacional",
+      "university": "Universidades",
+
+      "welcomeText1": "Encontre o curso e a faculdade perfeitos para você!",
+      "welcomeText2": "Tenha acesso ao nosso teste vocacional exclusivo e informações sobre",
+      "welcomeText3": "universidades brasileiras.",
+      "registerButton": "Cadastre-se",
+
+      "partner": "Nossos Parceiros",
+
+      "informationTitle": "Teoria de John Holland",
+      "informationText": "Nosso teste vocacional é fundamentado nos estudos do psicólogo John L. Holland, que desenvolveu a Teoria dos Tipos Vocacionais. Esta teoria identifica seis tipos principais de personalidade e ambientes de trabalho, conhecidos pela sigla RIASEC. Ao responder nosso teste, suas características pessoais são comparadas com os tipos RIASEC para identificar carreiras e áreas de estudo que correspondem ao seu perfil, aumentando as chances de satisfação e sucesso profissional.",
+    
+      "aboutTitle": "Sobre nós",
+      "aboutText": "Nós somos a VOCCO, uma plataforma destinada a orientar alunos do ensino médio da rede pública de educação no Brasil, auxiliando-os na escolha de suas futuras carreiras profissionais. Nosso nome deriva da palavra VOCAÇÃO em Latim.",
+      
+      "faqTitle": "Perguntas Frequentes",
+      "faqTitleText1": "O que é um teste vocacional?",
+      "faqText1":"Um teste vocacional é uma ferramenta que ajuda a identificar suas aptidões, interesses e habilidades, sugerindo possíveis carreiras e áreas de estudo que se alinham com seu perfil.",
+      "faqTitleText2": "Como funciona o teste vocacional?",
+      "faqText2":"'O teste consiste em uma série de perguntas sobre seus interesses, habilidades e preferências. Com base nas suas respostas, ele gera um relatório com sugestões de carreiras e cursos adequados para você.",
+      "faqTitleText3": "Como posso entrar em contato com uma universidade específica?",
+      "faqText3":"Cada página de universidade inclui detalhes de contato, como endereço, telefone e e-mail. Você também pode encontrar links para os sites oficiais das universidades.",
+      "faqTitleText4": "Como criar uma conta no site?",
+      "faqText4":"Clique no botão 'Cadastre-se' no centro da primeira página e preencha o formulário com suas informações pessoais.",
+      "faqTitleText5": "Como posso salvar minhas pesquisas e resultados de testes?",
+      "faqText5":"Após criar uma conta, fazer login e realizar um teste você terá salvo em sua página os resultados do testes, acessível a qualquer momento.",
+
+      "profileTitle1":"Realista",
+      "profileTitle2":"Investigativo",
+      "profileTitle3":"Artístico",
+      "profileTitle4":"Social",
+      "profileTitle5":"Empreendedor",
+      "profileTitle6":"Convencional",
+
+      "backButton": "Voltar",
+
+      "loginBackButton": "Página Inicial",
+
+      "loginTitle": "Acesse o Vocco!",
+      "loginText": "Informe seu email e senha para acessar a nossa plataforma.⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+      "loginField1": "Digite seu e-mail",
+      "loginField2": "Digite sua senha",
+      "loginRegister1": "Não possui uma conta?",
+      "loginRegister2": "Cadastre-se!",
+      "loginRecover": "Esqueceu sua senha?",
+      "loginButton": "Entrar",
+      "loginError": "Email ou senha inválidos :(",
+
+      "forgotTitle": "Esqueceu sua senha?",
+      "forgotText": "Para redefinir sua senha, digite seu e-mail cadastrado que rapidinho mandamos um link para você! Não esqueça de verificar a sua caixa de spam ;)",
+      "forgotField": "Digite seu e-mail",
+      "forgotButton": "Enviar",
+      "forgotSucess": "E-mail enviado com sucesso!",
+      "forgotError1": "Insira um e-mail válido!",
+      "forgotError2": "O e-mail inserido não foi encontrado :(",
+
+      "testIntroTitle": "Antes de começar ...",
+      "testIntro1": "Nosso teste vocacional é inspirado na teoria do psicólogo John L. Holland, conhecida como RIASEC - Realista, Investigativo, Artístico, Social, Empreendedor e Convencional.",
+      "testIntro2": "Essa teoria divide as pessoas em seis tipos diferentes de personalidade e ambientes de trabalho. Ao responder ao teste, suas características são comparadas com esses seis tipos para sugerir carreiras e áreas de estudo que combinam com o seu perfil.",
+      "testIntro3": "Além disso, usamos essas informações para ajudar você a encontrar cursos e universidades que se encaixam no seu perfil, aumentando suas chances de se sentir realizado e ter sucesso na sua trajetória profissional.",
+      "testIntroButton": "Iniciar Teste",
+      "testInstruction": "Responda às afirmações abaixo com o quanto você se identifica com cada uma delas.",
+      "testWarningTitle": "Tem certeza de que deseja sair?",
+      "testWarning": "Suas respostas atuais não serão salvas se você sair agora.",
+      "testWarningCancel": "Cancelar",
+      "testWarningExit": "Sair",
+
+      "dashboardTitle": "MEUS TESTES",
+      "dashboardCard1": "TESTES RESPONDIDOS",
+      "dashboardCard2": "PERFIS MAIS RECORRENTES",
+      "dashboardCard2Text": "Descubra seu perfil fazendo um teste.",
+      "dashboardCard3": "RESULTADOS",
+      "dashboardCard3Text": "Nenhum teste realizado.",
+      "dashboardTest1": "Fazer Teste",
+      "dashboardTest2": "Refazer Teste",
+
+      "dashboardInvestigativo": "Pessoas com este perfil são curiosas, analíticas e gostam de resolver problemas.",
+      "dashboardConvencional": "Pessoas com este perfil são organizadas, metódicas e preferem trabalhar com dados e detalhes.",
+      "dashboardEmpreendedor": "Pessoas com este perfil são líderes naturais, gostam de persuadir e influenciar os outros.",
+      "dashboardRealista": "Pessoas com este perfil são práticas, gostam de trabalhar com as mãos e preferem atividades físicas e mecânicas.",
+      "dashboardArtistico": "Pessoas com este perfil são criativas, gostam de se expressar através de diferentes formas de arte.",
+      "dashboardSocial": "Pessoas com este perfil são comunicativas, gostam de ajudar os outros e preferem atividades que envolvem interação interpessoal.",
+
+      "listInstitutionTitle": "Lista de Instituições",
+      "listInstitutionSearch": "Pesquisar Instituição"
+
+    }
+  }
