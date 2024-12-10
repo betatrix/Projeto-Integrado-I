@@ -15,6 +15,25 @@ export type InstituicaoForm = {
     formaIngresso: string;
     notaMec: number | null;
     sigla: string;
+    tipo: string;
     endereco: Endereco;
 
   };
+
+export type InstituicaoUpdateForm = {
+    id: string,
+    nome: string;
+    site: string;
+    formaIngresso: string;
+    notaMec: number | null;
+    sigla: string;
+    tipo: string;
+    endereco: Endereco;
+
+  };
+
+export enum TipoInstituicaoCurso {
+  SUPERIOR = 'SUPERIOR',
+  TECNICO = 'TECNICO',
+  AMBOS = 'AMBOS',
+}

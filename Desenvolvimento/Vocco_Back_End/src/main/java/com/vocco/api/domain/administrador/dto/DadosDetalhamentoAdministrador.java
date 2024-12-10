@@ -14,6 +14,6 @@ public record DadosDetalhamentoAdministrador(
         Boolean ativo,
         Endereco endereco) {
     public DadosDetalhamentoAdministrador(Administrador administrador){
-        this(administrador.getId(), administrador.getNome(), administrador.getCpf(), administrador.getEmail(), administrador.getCargo(), administrador.getCelular(),  administrador.getAtivo(), administrador.getEndereco());
+        this(administrador.getId(), administrador.getNome(), administrador.getCpf(), administrador.getUsuario().getLogin(), administrador.getCargo(), administrador.getCelular(),  administrador.getAtivo(), administrador.getEndereco());
     }
 }

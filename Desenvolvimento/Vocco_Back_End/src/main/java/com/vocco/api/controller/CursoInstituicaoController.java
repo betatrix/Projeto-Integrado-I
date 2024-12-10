@@ -1,12 +1,10 @@
 package com.vocco.api.controller;
 
-import com.vocco.api.domain.curso.dto.DadosDetalhamentoCurso;
 import com.vocco.api.domain.curso_instituicao.CursoInstituicaoService;
 import com.vocco.api.domain.curso_instituicao.dto.DadosAtualizacaoInstituicaoCurso;
 import com.vocco.api.domain.curso_instituicao.dto.DadosCadastroCursoInstituicao;
 import com.vocco.api.domain.curso_instituicao.dto.DadosDetalhamentoCursoInstituicao;
 import com.vocco.api.domain.instituicao.dto.DadosDetalhamentoInstituicao;
-import com.vocco.api.domain.instituicao.dto.DadosListagemInstituicaoEMecCurso;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +40,7 @@ public class CursoInstituicaoController {
     }
 
     @GetMapping("/instituicao/{id}")
-    public ResponseEntity<List<DadosDetalhamentoCurso>> buscarCursosPorInstituicao(@PathVariable Long id) {
+    public ResponseEntity<List<DadosDetalhamentoCursoInstituicao>> buscarCursosPorInstituicao(@PathVariable Long id) {
         return ResponseEntity.ok().body(service.buscarCursosPorInstituicao(id));
     }
 
@@ -52,13 +50,13 @@ public class CursoInstituicaoController {
     }
 
     @GetMapping("/curso/mec/{id}")
-    public ResponseEntity<List<DadosListagemInstituicaoEMecCurso>> buscarInstituicoesPorCursoComNotaMec(@PathVariable Long id) {
+    public ResponseEntity<List<DadosDetalhamentoCursoInstituicao>> buscarInstituicoesPorCursoComNotaMec(@PathVariable Long id) {
         return ResponseEntity.ok().body(service.buscarInstituicoesPorCursoComNotaMec(id));
     }
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity<Void> excluir(Long id) {
+    public ResponseEntity<Void> excluir(@PathVariable Long id) {
         service.excluir(id);
         return ResponseEntity.noContent().build();
     }

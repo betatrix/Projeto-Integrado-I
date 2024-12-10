@@ -17,7 +17,28 @@ const LogoCarousel: React.FC = () => {
         slidesToShow: 5,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 4000,
+        arrows: false,
+        responsive: [
+            {
+                breakpoint: 960,
+                settings: {
+                    slidesToShow: 3,
+                },
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                },
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 2,
+                },
+            },
+        ],
     };
 
     const logos = [
@@ -29,11 +50,20 @@ const LogoCarousel: React.FC = () => {
     ];
 
     return (
-        <Box sx={{ maxWidth: '100%', padding: '2rem',}}>
+        <Box sx={{ maxWidth: '100%', padding: '0.3rem' }}>
             <Slider {...settings}>
                 {logos.map((logo, index) => (
                     <Box key={index} sx={{ display: 'flex', justifyContent: 'center'}}>
-                        <img src={logo} alt={`Logo ${index + 1}`} style={{ maxWidth: '100%', maxHeight: '100%' }} />
+                        <img
+                            src={logo}
+                            alt={`Logo ${index + 1}`}
+                            style={{
+                                maxWidth: '100%',
+                                maxHeight: '100%',
+                                paddingLeft: '2.5rem',
+                                objectFit: 'contain',
+                            }}
+                        />
                     </Box>
                 ))}
             </Slider>

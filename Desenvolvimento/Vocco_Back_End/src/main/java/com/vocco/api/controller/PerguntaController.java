@@ -33,13 +33,19 @@ public class PerguntaController {
         DadosDetalhamentoPergunta pergunta = service.editar(dados);
         return ResponseEntity.ok().body(pergunta);
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<DadosDetalhamentoPergunta> detalhar(@PathVariable Long id){
         return ResponseEntity.ok().body(service.detalhar(id));
     }
 
+    @GetMapping
+    public ResponseEntity<List<DadosListagemPergunta>> listar(){
+        return ResponseEntity.ok().body(service.listar());
+    }
+
     @GetMapping("teste/{id}")
-    public ResponseEntity<List<DadosListagemPergunta>> listar(@PathVariable Long id){
+    public ResponseEntity<List<DadosListagemPergunta>> listarPorTeste(@PathVariable Long id){
         return ResponseEntity.ok().body(service.listarPorTeste(id));
     }
 

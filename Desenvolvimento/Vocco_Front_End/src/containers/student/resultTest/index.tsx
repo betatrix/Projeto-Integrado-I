@@ -150,7 +150,8 @@ const ResultScreen: React.FC = () => {
             setFilteredInstitutions(data);
             setOpenModal(true);
         } catch (error) {
-            console.error('Erro ao buscar instituições:', error);
+            console.error('Erro ao buscar instituições);');
+            throw error;
         }
     };
 

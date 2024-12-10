@@ -4,17 +4,24 @@ import com.vocco.api.domain.administrador.dto.DadosAtualizacaoAdministrador;
 import com.vocco.api.domain.administrador.dto.DadosCadastroAdministrador;
 import com.vocco.api.domain.administrador.dto.DadosDetalhamentoAdministrador;
 import com.vocco.api.domain.administrador.dto.DadosListagemAdministrador;
-import com.vocco.api.domain.curso.dto.DadosListagemCurso;
-import com.vocco.api.domain.instituicao.Instituicao;
+import com.vocco.api.domain.usuario.Usuario;
+import com.vocco.api.domain.usuario.UsuarioRepository;
+import com.vocco.api.infra.aws.FilesProfileService;
 import com.vocco.api.infra.exception.excecoesPersonalizadas.ValidacaoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.util.List;
 
 @Service
 public class AdministradorService {
     @Autowired
     private AdministradorRepository repository;
+    @Autowired
+    private FilesProfileService filesProfileService;
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     public DadosDetalhamentoAdministrador cadastrar(DadosCadastroAdministrador dados){
         if(repository.existsByEmail(dados.email())){
@@ -22,6 +29,18 @@ public class AdministradorService {
         }
         Administrador administrador = new Administrador(dados);
         repository.save(administrador);
+        return new DadosDetalhamentoAdministrador(administrador);
+    }
+
+    public DadosDetalhamentoAdministrador adicionarFoto(Long id, MultipartFile arquivo){
+        Administrador administrador = repository.getReferenceByUsuarioId(id);
+        Usuario usuario = administrador.getUsuario();
+        if(arquivo != null){
+            usuario.setFotoDePerfil(filesProfileService.salvarFotoDePerfil(arquivo, id));
+        } else{
+            throw new ValidacaoException("Insira uma imagem válida.");
+        }
+        usuarioRepository.save(usuario);
         return new DadosDetalhamentoAdministrador(administrador);
     }
 
@@ -50,6 +69,7 @@ public class AdministradorService {
     public void excluir(Long id){
         Administrador administrador = repository.getReferenceById(id);
         administrador.excluir();
+        administrador.getUsuario().excluir();
         repository.save(administrador);
     }
 

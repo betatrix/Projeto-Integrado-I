@@ -44,9 +44,9 @@ const styles = {
     },
 };
 
-function StudentHeader() {
-    const{ t } = useTranslation();
-    
+function InstitutionSearchHeader() {
+    const { t } = useTranslation();
+
     const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
     // const [anchorElTeste, setAnchorElTeste] = useState<null | HTMLElement>(null);
     const authContext = useContext(AuthContext);
@@ -73,7 +73,7 @@ function StudentHeader() {
     };
 
     return (
-        <AppBar position="static" style={{ backgroundColor: '#1b1f27' }}>
+        <AppBar position="static" style={{ backgroundColor: '#F3F3F3', boxShadow: 'none' }}>
             <Container maxWidth="xl">
                 <Toolbar sx={{ justifyContent: 'space-between' }}>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -99,9 +99,9 @@ function StudentHeader() {
                         </Box>
                     </Box>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <LanguageMenu />
+                        <LanguageMenu />
                         <Typography sx={styles.welcomeText}>
-                        {t('welcome')} {student ? student.nome : 'usuário'}!
+                            {t('welcome')} {student ? student.nome : 'usuário'}!
                         </Typography>
                         <Tooltip title="Opções de Perfil">
                             <IconButton onClick={handleOpenUserMenu} sx={styles.avatarButton}>
@@ -134,5 +134,5 @@ function StudentHeader() {
     );
 }
 
-export default StudentHeader;
+export default InstitutionSearchHeader;
 

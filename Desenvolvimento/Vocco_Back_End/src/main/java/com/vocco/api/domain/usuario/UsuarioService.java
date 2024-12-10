@@ -28,7 +28,7 @@ import java.util.UUID;
 @Service
 public class UsuarioService implements UserDetailsService {
     @Autowired
-    UsuarioRepository repository;
+    private UsuarioRepository repository;
     @Autowired
     private TokenService tokenService;
     @Autowired

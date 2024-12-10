@@ -2,7 +2,6 @@ package com.vocco.api.domain.resposta;
 
 import com.vocco.api.domain.estudante_teste.EstudanteTeste;
 import com.vocco.api.domain.estudante_teste.EstudanteTesteService;
-import com.vocco.api.domain.estudante_teste.dto.DadosCadastroEstudanteTeste;
 import com.vocco.api.domain.pergunta.Pergunta;
 import com.vocco.api.domain.pergunta.PerguntaRepository;
 import com.vocco.api.domain.resposta.dto.DadosCadastroResposta;
@@ -35,7 +34,7 @@ public class RespostaService {
             repository.save(novaResposta);
         });
 
-        return resultadoService.cadastrar(estudanteTeste, listarRespostasParaResultado(estudanteTeste.getId()));
+        return resultadoService.cadastrar(estudanteTeste, listarRespostasParaResultado(estudanteTeste.getId()), dados.tipo());
     }
 
     public List<DadosDetalhamentoResposta> listarRespostasPorEstudanteTeste(Long id){

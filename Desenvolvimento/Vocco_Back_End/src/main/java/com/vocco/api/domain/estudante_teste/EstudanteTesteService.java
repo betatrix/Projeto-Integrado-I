@@ -2,10 +2,10 @@ package com.vocco.api.domain.estudante_teste;
 
 import com.vocco.api.domain.estudante.Estudante;
 import com.vocco.api.domain.estudante.EstudanteRepository;
+import com.vocco.api.domain.estudante_perfil.dto.DadosPerfilRecorrente;
 import com.vocco.api.domain.estudante_teste.dto.DadosCadastroEstudanteTeste;
 import com.vocco.api.domain.estudante_teste.dto.DadosDetalhamentoEstudanteTeste;
 import com.vocco.api.domain.estudante_teste.dto.DadosListagemEstudanteTestePerfis;
-import com.vocco.api.domain.perfil.Perfil;
 import com.vocco.api.domain.resultado.Resultado;
 import com.vocco.api.domain.resultado.ResultadoRepository;
 import com.vocco.api.domain.resultado_perfil.ResultadoPerfil;
@@ -48,30 +48,35 @@ public class EstudanteTesteService {
         return registrosDeTestes.stream().map(estudanteTeste -> {
             Resultado resultado = resultadoRepository.findByEstudanteTesteId(estudanteTeste.getId());
             List<ResultadoPerfil> resultadoPerfis = resultadoPerfilRepository.findAllByResultadoId(resultado.getId());
-            List<Perfil> perfis = resultadoPerfis.stream().map(ResultadoPerfil::getPerfil).toList();
-            return new DadosListagemEstudanteTestePerfis(estudanteTeste, perfis);
+//            List<Perfil> perfis = resultadoPerfis.stream().map(ResultadoPerfil::getPerfil).toList();
+            return new DadosListagemEstudanteTestePerfis(estudanteTeste, resultadoPerfis);
         }).toList();
     }
 
-    public List<String> listarPerfisMaisRecorrentesPorUsuarioId(Long usuarioId){
+    public List<DadosPerfilRecorrente> listarPerfisMaisRecorrentesPorUsuarioId(Long usuarioId) {
         Estudante estudante = estudanteRepository.getReferenceByUsuarioId(usuarioId);
         List<EstudanteTeste> registrosDeTestes = repository.findByEstudanteId(estudante.getId());
 
         Map<String, Long> perfilFrequencia = new HashMap<>();
+        Map<String, String> perfilImagem = new HashMap<>();
+
         for (EstudanteTeste estudanteTeste : registrosDeTestes) {
             Resultado resultado = resultadoRepository.findByEstudanteTesteId(estudanteTeste.getId());
             List<ResultadoPerfil> resultadoPerfis = resultadoPerfilRepository.findAllByResultadoId(resultado.getId());
 
             for (ResultadoPerfil resultadoPerfil : resultadoPerfis) {
-                String perfil = resultadoPerfil.getPerfil().getDescricao();
-                perfilFrequencia.put(perfil, perfilFrequencia.getOrDefault(perfil, 0L) + 1);
+                String descricao = resultadoPerfil.getPerfil().getDescricao();
+                String imagem = resultadoPerfil.getPerfil().getImagem();
+
+                perfilFrequencia.put(descricao, perfilFrequencia.getOrDefault(descricao, 0L) + 1);
+                perfilImagem.putIfAbsent(descricao, imagem);
             }
         }
 
         return perfilFrequencia.entrySet().stream()
-                .sorted(Map.Entry.<String, Long>comparingByValue().reversed())
+                .sorted((e1, e2) -> Long.compare(e2.getValue(), e1.getValue()))
                 .limit(2)
-                .map(Map.Entry::getKey)
+                .map(entry -> new DadosPerfilRecorrente(entry.getKey(), perfilImagem.get(entry.getKey())))
                 .collect(Collectors.toList());
     }
 

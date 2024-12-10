@@ -1,8 +1,8 @@
 import { PolicesInstitutionForm } from '../types/policiesTypes';
-import { buscarEntidades, buscarEntidadePorId, excluirEntidade, substituirEntidade } from './apiService';
+import { buscarEntidadesAtivas, buscarEntidadePorId, excluirEntidade, substituirEntidade } from './apiService';
 
 export const buscarPoliticas = async () => {
-    const response = await buscarEntidades('politica/ativos');
+    const response = await buscarEntidadesAtivas('politica');
     return response;
 };
 

@@ -1,5 +1,6 @@
 package com.vocco.api.controller;
 
+import com.vocco.api.domain.estudante_perfil.dto.DadosPerfilRecorrente;
 import com.vocco.api.domain.estudante_teste.EstudanteTesteService;
 import com.vocco.api.domain.estudante_teste.dto.DadosDetalhamentoEstudanteTeste;
 import com.vocco.api.domain.estudante_teste.dto.DadosListagemEstudanteTestePerfis;
@@ -29,7 +30,7 @@ public class EstudanteTesteController {
     }
 
     @GetMapping("teste/perfis/{estudanteId}")
-    public ResponseEntity<List<String>> listarPerfisMaisRecorrentes(@PathVariable Long estudanteId){
+    public ResponseEntity<List<DadosPerfilRecorrente>> listarPerfisMaisRecorrentes(@PathVariable Long estudanteId){
         return ResponseEntity.ok().body(service.listarPerfisMaisRecorrentesPorUsuarioId(estudanteId));
     }
 

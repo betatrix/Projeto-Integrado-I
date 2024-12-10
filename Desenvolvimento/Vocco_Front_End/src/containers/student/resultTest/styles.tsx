@@ -77,9 +77,6 @@ export const ResultMessage = styled(Typography)`
 `;
 
 export const CourseCard = styled(Box)<{ primary: boolean }>`
-  /* color: ${({ primary }) => (primary ? '#368ABF' : '#7F00F5')}; */
-  border-color:  ${({ primary }) => (primary ? '#5dabdc' : '#861aeb')};
-  border-style: solid;
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* Garante que o botão fique no final */
@@ -87,29 +84,11 @@ export const CourseCard = styled(Box)<{ primary: boolean }>`
   padding: 27px;
   padding-left: 50px;
   padding-right: 40px;
-  border-radius: 8px;
+  border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  margin: 0 10px; /* espaçamento entre os cards */
   text-align: center;
-  height: 350px;
-  width: 150px; /* Defina a largura dos cards */
-  box-sizing: border-box;
-  position: relative; /* Necessário para posicionar o botão corretamente */
-
-  .MuiTypography-root {
-    text-align: justify;
-  }
-
-  .MuiList-root {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    text-align: justify;
-  }
-
-  .MuiListItem-root {
-    padding: 0;
-  }
+  height: 550px;
+  width: 400px; /* Defina a largura dos cards */
 `;
 
 export const CarouselContainer = styled(Box)`

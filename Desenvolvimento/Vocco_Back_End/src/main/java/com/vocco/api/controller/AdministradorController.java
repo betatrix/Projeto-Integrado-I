@@ -33,6 +33,7 @@ public class AdministradorController {
         return ResponseEntity.ok().body(administrador);
     }
 
+
     @GetMapping("/{id}")
     public ResponseEntity<DadosDetalhamentoAdministrador> detalhar(@PathVariable Long id){
         return ResponseEntity.ok().body(service.detalhar(id));

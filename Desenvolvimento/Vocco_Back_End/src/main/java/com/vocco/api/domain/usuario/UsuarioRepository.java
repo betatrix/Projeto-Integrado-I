@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface UsuarioRepository extends JpaRepository<Usuario, String> {
+public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     UserDetails findByLogin(String login);
 
     @Query("SELECT us FROM Usuario us WHERE us.login = :login")

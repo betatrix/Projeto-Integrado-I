@@ -3,6 +3,7 @@ package com.vocco.api.domain.curso;
 import com.vocco.api.domain.area.Area;
 import com.vocco.api.domain.curso.dto.DadosAtualizacaoCurso;
 import com.vocco.api.domain.curso.dto.DadosCadastroCurso;
+import com.vocco.api.domain.instituicao.TipoInstituicaoCurso;
 import com.vocco.api.domain.perfil.Perfil;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -21,11 +22,14 @@ import java.util.function.Consumer;
 @Entity
 @Table
 public class Curso {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String descricao;
     private Boolean ativo;
+    @Enumerated(EnumType.STRING)
+    private TipoInstituicaoCurso tipo;
     @Enumerated(EnumType.STRING)
     private NivelEmpregabilidade empregabilidade; // Necessário verificar
     private List<String> possiveisCarreiras; //Talvez transformar carreira em uma entidade
@@ -41,15 +45,19 @@ public class Curso {
         this.possiveisCarreiras = dados.possiveisCarreiras();
         this.area = area;
         this.perfil = perfil;
+        this.tipo = dados.tipo();
     }
 
     public void excluir(){
         this.ativo = false;
     }
+
     public void editarInformacoes(DadosAtualizacaoCurso dados){
         atribuirSeForNaoNulo(dados.descricao(), this::setDescricao);
         atribuirSeForNaoNulo(dados.empregabilidade(), this::setEmpregabilidade);
         atribuirSeForNaoNulo(dados.possiveisCarreiras(), this::setPossiveisCarreiras);
+        atribuirSeForNaoNulo(dados.tipo(), this::setTipo);
+        atribuirSeForNaoNulo(dados.ativo(), this::setAtivo);
     }
 
     private <T> void atribuirSeForNaoNulo(T valor, Consumer<T> setter) {

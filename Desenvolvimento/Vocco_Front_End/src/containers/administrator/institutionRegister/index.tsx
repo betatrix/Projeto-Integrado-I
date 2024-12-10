@@ -1,8 +1,7 @@
-
 import React from 'react';
-import { Formik, Form, Field } from 'formik';
-import { TextField } from 'formik-mui';
-import { Button, Box, Typography, Grid, Paper, Stepper, StepLabel } from '@mui/material';
+import { Formik, Form, Field, } from 'formik';
+import { TextField, Select } from 'formik-mui';
+import { Button, Box, Typography, Grid, Paper, MenuItem, Stepper, StepLabel } from '@mui/material';
 import Step from '@mui/material/Step';
 import axios from 'axios';
 import * as Yup from 'yup';
@@ -10,13 +9,13 @@ import { useInstitution } from '../../../context/institutionContext';
 import { useNavigate } from 'react-router-dom';
 import { cadastrarInstituicao } from '../../../services/institutionService';
 import AdminHeader from '../../../components/adminHeader';
-import Footer from '../../../components/adminFooter';
-
+import Footer from '../../../components/homeFooter';
 interface FormValues {
     nome: string;
     site: string;
     formaIngresso: string;
     notaMec: number | null;
+    tipo: string;
     sigla: string;
     endereco: {
         logradouro: string;
@@ -28,6 +27,11 @@ interface FormValues {
         cep: string;
     };
 }
+const tipoInstituicao = [
+    { label: 'Superior', value: 'SUPERIOR' },
+    { label: 'Técnico', value: 'TECNICO' },
+    { label: 'Ambos', value: 'AMBOS' },
+];
 
 export const CadastroInstituicao: React.FC = () => {
     const navigate = useNavigate();
@@ -44,6 +48,7 @@ export const CadastroInstituicao: React.FC = () => {
         formaIngresso: '',
         notaMec: null,
         sigla: '',
+        tipo: '', // Usando um valor do enum
         endereco: {
             logradouro: '',
             numero: '',
@@ -63,13 +68,15 @@ export const CadastroInstituicao: React.FC = () => {
         formaIngresso: Yup.string().required('Forma de Ingresso é obrigatória'),
         notaMec: Yup.number()
             .nullable()
-            .typeError('A nota MEC deve ser um número')
-            .min(1, 'A nota MEC deve ser no mínimo 1')
-            .max(5, 'A nota MEC deve ser no máximo 5')
-            .required('A nota MEC é obrigatória'),
+            .typeError('A nota deve ser um número')
+            .min(1, 'A nota deve ser no mínimo 1')
+            .max(10, 'A nota deve ser no máximo 10')
+            .required('A nota é obrigatória'),
         sigla: Yup.string()
             .matches(/^[A-Z]+$/, 'A sigla deve estar em letras maiúsculas')
             .required('A sigla é obrigatória'),
+        tipo: Yup.string()
+            .required('Selecione um tipo'),
         endereco: Yup.object().shape({
             cep: Yup.string()
                 .max(8, 'O CEP deve ter no máximo 8 caracteres')
@@ -97,39 +104,37 @@ export const CadastroInstituicao: React.FC = () => {
                 setFieldValue('endereco.estado', uf);
             } catch (error) {
                 console.error('Erro ao buscar CEP:', error);
+                throw error;
             }
         }
     };
+
     const handleSubmit = async (values: FormValues, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }) => {
         try {
             const response = await cadastrarInstituicao(values);
-            console.log(values);
-            console.log('Instituição cadastrada com sucesso:', response);
             setInstitutionId(response.id);
             navigate('/cursos', { state: { institutionId: response.id } });
         } catch (error) {
-            console.log(values);
             console.error('Erro ao cadastrar instituição:', error);
+            throw error;
         }
-        console.log(values);
         setSubmitting(false);
-        console.log(values);
     };
+
     return (
         <>
             <AdminHeader />
-            <Box>
-                <Box sx={{ marginTop: '20px' }}>
-                    <Box sx={{ width: '100%' }}>
-                        <Stepper activeStep={0} alternativeLabel>
-                            {steps.map((label) => (
-                                <Step key={label}>
-                                    <StepLabel>{label}</StepLabel>
-                                </Step>
-                            ))}
-                        </Stepper>
-                    </Box>
-                    <Box sx={{ marginTop: '20px', marginBottom: '40px' }}>
+            <Box sx={{ backgroundColor: '#F3F3F3', padding: '20px' }}>
+                <Box sx={{ height: 50 }}></Box>
+                <Box sx={{ backgroundColor: '#F3F3F3', marginTop: 10 }}>
+                    <Stepper activeStep={0} alternativeLabel>
+                        {steps.map((label) => (
+                            <Step key={label}>
+                                <StepLabel>{label}</StepLabel>
+                            </Step>
+                        ))}
+                    </Stepper>
+                    <Box sx={{ marginTop: 5 }}>
                         <Formik
                             initialValues={initialValues}
                             validationSchema={validationSchema}
@@ -146,21 +151,27 @@ export const CadastroInstituicao: React.FC = () => {
                                     }}
                                 >
                                     <Form>
-                                        <Box sx={{ '& .MuiTextField-root': { m: 1 } }}>
-                                            <Paper sx={{ marginTop: '30px', marginBottom: '30px' }}>
+                                        <Box sx={{
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            gap: 2,
+                                            maxWidth: 600,
+                                            margin: 'auto',
+                                        }}>
+                                            <Paper sx={{ padding: 4, marginBottom: 3, paddingBottom: 8, paddingLeft: 7, paddingRight: 7 }}>
+                                                <Typography variant="h6" sx={{
+                                                    fontSize: '25px', textAlign: 'left',
+                                                    fontFamily: 'Roboto, monospace',
+                                                    color: '#757575',
+                                                    fontWeight: 'bold',
+                                                }}>
+                                                    Dados da Instituição
+                                                </Typography>
                                                 <Grid
                                                     container
                                                     spacing={2}
-                                                    sx={{
-                                                        maxWidth: 500,
-                                                        paddingLeft: '60px',
-                                                        paddingTop: '20px',
-                                                        paddingBottom: '30px',
-                                                    }}
                                                 >
-                                                    <Typography variant="h6" sx={{ textAlign: 'left' }}>
-                                                        Dados Gerais
-                                                    </Typography>
+
                                                     <Grid item xs={12}>
                                                         <Field
                                                             component={TextField}
@@ -187,12 +198,35 @@ export const CadastroInstituicao: React.FC = () => {
                                                         <Field
                                                             component={TextField}
                                                             name="formaIngresso"
-                                                            label="Forma de Ingresso "
+                                                            label="Forma de Ingresso"
                                                             variant="standard"
                                                             size="small"
                                                             fullWidth
                                                             required
                                                         />
+                                                    </Grid>
+                                                    <Grid item xs={12}>
+                                                        <Box sx={{
+                                                            display: 'grid',
+                                                            width: '100%',
+                                                        }}>
+
+                                                            <Field
+                                                                variant="filled"
+                                                                component={Select}
+                                                                name="tipo"
+                                                                label="Tipo de Instituição"
+                                                                displayEmpty
+                                                                fullWidth
+                                                                inputProps={{ 'aria-label': 'Tipo de Instituição' }}
+                                                            >
+                                                                {tipoInstituicao.map((option) => (
+                                                                    <MenuItem key={option.value} value={option.value}>
+                                                                        {option.label}
+                                                                    </MenuItem>
+                                                                ))}
+                                                            </Field>
+                                                        </Box>
                                                     </Grid>
                                                     <Grid item xs={6}>
                                                         <Field
@@ -210,9 +244,9 @@ export const CadastroInstituicao: React.FC = () => {
                                                             component={TextField}
                                                             name="notaMec"
                                                             type="number"
-                                                            label="Nota MEC"
+                                                            label="Nota MEC|IDEB"
                                                             variant="standard"
-                                                            inputProps={{ min: 1, max: 5 }}
+                                                            inputProps={{ min: 1, max: 10 }}
                                                             size="small"
                                                             fullWidth
                                                             required
@@ -221,26 +255,30 @@ export const CadastroInstituicao: React.FC = () => {
                                                 </Grid>
                                             </Paper>
                                         </Box>
-                                        <Box sx={{ '& .MuiTextField-root': { m: 1 } }}>
-                                            <Paper sx={{ marginTop: '20px', marginBottom: '20px' }}>
+
+                                        <Box sx={{
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            gap: 2,
+                                            maxWidth: 600,
+                                            margin: 'auto',
+                                        }}>
+                                            <Paper sx={{ padding: 4, marginBottom: 1, paddingBottom: 8, paddingLeft: 7, paddingRight: 7 }}>
+                                                <Typography
+                                                    variant="h6"
+                                                    sx={{
+                                                        fontSize: '25px', textAlign: 'left',
+                                                        fontFamily: 'Roboto, monospace',
+                                                        color: '#757575',
+                                                        fontWeight: 'bold',
+                                                    }}
+                                                >
+                                                    Endereço
+                                                </Typography>
                                                 <Grid
                                                     container
                                                     spacing={2}
-                                                    sx={{
-                                                        maxWidth: 500,
-                                                        paddingLeft: '60px',
-                                                        paddingTop: '20px',
-                                                        paddingBottom: '30px',
-                                                    }}
                                                 >
-                                                    <Grid item xs={12}>
-                                                        <Typography
-                                                            variant="h6"
-                                                            sx={{ textAlign: 'left' }}
-                                                        >
-                                                            Endereço
-                                                        </Typography>
-                                                    </Grid>
                                                     <Grid item xs={6}>
                                                         <Field
                                                             component={TextField}
@@ -327,31 +365,27 @@ export const CadastroInstituicao: React.FC = () => {
                                                 container
                                                 spacing={2}
                                                 justifyContent="space-between"
+                                                sx={{ marginBottom: 10 }}
                                             >
                                                 <Grid
                                                     item
-                                                    xs={6}
+                                                    xs={12}
                                                     display="flex"
-                                                    justifyContent="flex-start"
-                                                >
-                                                    <Button
-                                                        type="button"
-                                                        variant="outlined"
-                                                        onClick={() => navigate('/admin')}
-                                                    >
-                                                        Voltar
-                                                    </Button>
-                                                </Grid>
-                                                <Grid
-                                                    item
-                                                    xs={6}
-                                                    display="flex"
-                                                    justifyContent="flex-end"
+                                                    justifyContent="center"
                                                 >
                                                     <Button
                                                         type="submit"
                                                         disabled={isSubmitting}
                                                         variant="contained"
+                                                        sx={{
+                                                            fontSize: '20px',
+                                                            fontFamily: 'Roboto, monospace',
+                                                            color: 'white',
+                                                            backgroundColor: '#185D8E',
+                                                            fontWeight: 'bold',
+                                                            width: '100%',
+                                                            height: '45px',
+                                                        }}
                                                     >
                                                         Avançar
                                                     </Button>

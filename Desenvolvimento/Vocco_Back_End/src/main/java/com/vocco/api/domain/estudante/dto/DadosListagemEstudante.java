@@ -10,9 +10,11 @@ public record DadosListagemEstudante(
         String email,
         LocalDate dataNascimento,
         String celular,
+        Boolean ativo,
         NivelEscolar nivelEscolar
 ) {
     public DadosListagemEstudante(Estudante estudante){
-        this(estudante.getId(), estudante.getNome(), estudante.getEmail(), estudante.getDataNascimento(), estudante.getCelular(), estudante.getNivelEscolar());
+        this(estudante.getId(), estudante.getNome(), estudante.getUsuario().getLogin(), estudante.getDataNascimento(),
+                estudante.getCelular(), estudante.isAtivo(), estudante.getNivelEscolar());
     }
 }

@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 public record DadosCadastroPergunta(
         @NotBlank
         String texto,
+        String textoIngles,
         @NotNull
         Long testeId,
         @NotNull

@@ -18,11 +18,14 @@ public class Resultado {
     private Long id;
     @Column(length = 1000)
     private String mensagem;
+    @Column(length = 1000)
+    private String mensagemIngles;
     @OneToOne
     private EstudanteTeste estudanteTeste;
 
-    public Resultado(EstudanteTeste estudanteTeste, String mensagem){
+    public Resultado(EstudanteTeste estudanteTeste, String mensagem, String mensagemIngles){
         this.estudanteTeste = estudanteTeste;
         this.mensagem = mensagem;
+        this.mensagemIngles = mensagemIngles;
     }
 }

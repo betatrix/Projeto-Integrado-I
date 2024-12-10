@@ -1,10 +1,10 @@
 \chapter{DESENVOLVIMENTO DO PROJETO}
 \label{geral-requisitos-gerenciamento}
 
-No desenvolvimento de qualquer projeto, desde os mais simples até os mais complexos, uma fase crucial é a sua concepção e planejamento. Neste capítulo, exploraremos os diversos aspectos envolvidos nesse processo inicial, que nos guiarão durante o desenvolvimento do projeto. Desde a definição dos requisitos e escopo do projeto, passando pela elaboração de casos de uso e arquitetura, até a consideração da infraestrutura necessária para sua implementação, cada etapa desempenha um papel fundamental na construção do produto final. Além disso, discutiremos a importância da manutenibilidade do sistema, sua viabilidade financeira e as diferentes fases de entrega, visando garantir não apenas a entrega de um produto funcional, mas também sua sustentabilidade e sucesso a longo prazo.
+No desenvolvimento de qualquer projeto, desde os mais simples até os mais complexos, uma fase crucial é a sua concepção e planejamento. Neste capítulo, serão explorados os diversos aspectos envolvidos nesse processo inicial, que nos guiarão durante o desenvolvimento do projeto. Desde a definição dos requisitos e escopo do projeto, passando pela elaboração de casos de uso e arquitetura, até a consideração da infraestrutura necessária para sua implementação, cada etapa desempenha um papel fundamental na construção do produto final. Além disso, será discutida a importância da manutenibilidade do sistema, sua viabilidade financeira e as diferentes fases de entrega, visando garantir não apenas a entrega de um produto funcional, mas também sua sustentabilidade e sucesso a longo prazo.
 
 \section{Elicitação de Requisitos}
-Neste capítulo, vamos explorar o processo de elicitação de requisitos, fundamental para o desenvolvimento de \textit{software}.
+Neste capítulo, será explorado o processo de elicitação de requisitos, fundamental para o desenvolvimento de \textit{software}.
 
 \subsection{Requisitos funcionais}
 
@@ -25,7 +25,7 @@ Requisitos funcionais são especificações que descrevem as funções e operaç
     \item \textbf{Funcionalidades das Instituições Públicas:}
     \begin{itemize}
         \item \textbf{RF4 }- Manter informações pertinentes sobre os cursos (incluir, alterar, excluir, consultar).
-        \item \textbf{RF5} - Disponibilizar informações dos cursos e \ac{ies} cadastradas, permitindo filtragem.
+        \item \textbf{RF5} - Disponibilizar informações dos cursos ,\ac{ies}, e instituições de ensino técnico cadastradas, permitindo filtragem.
     \end{itemize}
 
     \item \textbf{Funcionalidades dos Usuários (Administradores e Estudantes):}
@@ -88,9 +88,9 @@ Dentro de um \textit{software}, as regras de negócio referem-se às diretrizes 
 
 As regras de negócio definidas para a aplicação Vocco são:
 \begin{itemize}
-\item {As informações das universidades devem ser atualizadas semestralmente para refletir quaisquer mudanças nas políticas de admissão e nos cursos oferecidos.}
+\item {As informações das universidades e intituições de ensino técnico devem ser atualizadas semestralmente para refletir quaisquer mudanças nas políticas de admissão e nos cursos oferecidos.}
 \item {Será permitida a criação de contas para estudantes maiores de 14 anos.}
-\item {Só serão permitidos cadastros e recomendações de \ac{ies} públicas. 
+\item {Só serão permitidos cadastros e recomendações de \ac{ies} e instituições de ensino técnico públicas. 
 }
 
 \end{itemize}
@@ -113,7 +113,8 @@ A seguir, apresenta-se o caso de uso desenvolvido para a plataforma Vocco, apres
     \caption{Caso de Uso: Funcionamento do Sistema}
     \label{casodeuso}
 \end{figure}  
-
+A figura apresenta o diagrama de caso de uso do funcionamento do fluxo de navegação básico do sistema.
+\newpage
 
 \begin{table}[h!]
 \centering
@@ -156,6 +157,7 @@ Pós-Condições & Cadastro realizado com sucesso e administrador pode acessar a
 \footnotesize \textbf{Fonte}: Elaborado pelo autor.
 \end{table}
 
+A tabela apresenta o fluxo de cadastro de usuário para os administradores, que são usuários com mais permissões.
 
 
 \begin{table}[h!]
@@ -204,6 +206,8 @@ Pós-Condições & Instituição pública cadastrada com sucesso na plataforma. 
 \footnotesize \textbf{Fonte}: Elaborado pelo autor.
 \end{table}
 
+A tabela apresenta o fluxo de cadastro de instituições públicas tanto de ensino superior, quanto de ensino técnico.
+
 \begin{table}[h!]
 \centering
 \caption{Fluxo de Cadastro de Usuário (Estudante)}
@@ -243,6 +247,9 @@ Pós-Condições & Cadastro realizado com sucesso e estudante pode acessar a pla
 \\[1ex]
 \footnotesize \textbf{Fonte}: Elaborado pelo autor.
 \end{table}
+
+A tabela apresenta o fluxo de cadastro de usuário os estudantes, que são os usuários comuns do sistema.
+\newpage
 
 \newpage
 \begin{table}[h!]
@@ -285,6 +292,8 @@ Pós-Condições & Pergunta incluída, alterada, excluída ou consultada com suc
 \footnotesize \textbf{Fonte}: Elaborado pelo autor.
 \end{table}
 
+A tabela apresenta o fluxo para manter perguntas do teste vocacional, que é uma atividade somente permitida aos administradores do sistema.
+
 \begin{table}[h!]
 \centering
 \caption{Fluxo de Manter Informações sobre Cursos}
@@ -324,6 +333,9 @@ Pós-Condições & Informações sobre os cursos atualizadas com sucesso, permit
 \footnotesize \textbf{Fonte}: Elaborado pelo autor.
 \end{table}
 
+A tabela apresenta o fluxo para manterinformações sobre cursos, que é uma atividade somente permitida aos administradores do sistema.
+\newpage
+
 \begin{table}[h!]
 \centering
 \caption{Fluxo de Responder o Teste Vocacional}
@@ -361,6 +373,8 @@ Pós-Condições & Respostas registradas no sistema para gerar recomendações d
 \\[1ex]
 \footnotesize \textbf{Fonte}: Elaborado pelo autor.
 \end{table}
+
+A tabela apresenta o fluxo de responder ao teste vocacional, que é uma tarefa permitida tanto para administradores quanto para estudantes.
 
 \begin{table}[h!]
 \centering
@@ -400,25 +414,29 @@ Pós-Condições & Recomendação de curso gerada e apresentada ao estudante.\\
 \footnotesize \textbf{Fonte}: Elaborado pelo autor.
 \end{table}
 
+A tabela apresenta o fluxo de apresentar recomendação de curso, que é uma atividade de visualização possível tanto para administradores, quanto para estudantes.
+\newpage
+
 \clearpage
 
 \section{Volumetria}
 
-Para a fase inicial do projeto, estimamos a seguinte volumetria de dados para a plataforma:
+Para a fase inicial do projeto, estima-se a seguinte volumetria de dados para a plataforma:
 
 \begin{itemize}
 \item Estudantes: A aplicação será lançada sem estudantes cadastrados.
-\item Administradores: Começaremos com 5 administradores cadastrados, que são os membros integrantes do projeto.
-\item Instituições: Inicialmente, todas as universidades federais do Brasil serão cadastradas, totalizando 69 instituições.
-\item Áreas: A aplicação iniciará com 12 áreas cadastradas. 
-\item Cursos: A aplicação iniciará com 50 cursos cadastrados. 
-\item Políticas Públicas: A aplicação será lançada com 20 políticas públicas cadastradas, relacionadas com as instituições que as possuem.
-\item Testes Vocacionais: Disponibilizaremos inicialmente uma única opção de teste vocacional para os usuários.
-\item Perguntas: O teste vocacional inicialmente terá 30 perguntas.
-\item Perfis: Para recomendar cursos aos usuários, utilizaremos os 6 perfis definidos pela Teoria de Escolhas Vocacionais de John Holland.
+\item Administradores: A aplicação tem 5 administradores cadastrados, que são os membros integrantes do projeto.
+\item Instituições de Ensino Superior: Todas as universidades federais, municipais e estaduais do Brasil serão cadastradas, totalizando 473 instituições de ensino superior.
+\item Instituições de Ensino Técnico: Todas as instituições de ensino técnico do Centro Paula Souza do estado de São Paulo serão cadastradas, totalizando 228 instituições. 
+\item Áreas do conhecimento: A aplicação possui 12 áreas do conhecimento cadastradas. 
+\item Cursos: A aplicação tem 108 cursos de graduação e 85 cursos técnicos, totalizando 193 cursos cadastrados. 
+\item Políticas Públicas: A aplicação será lançada com 34 políticas públicas cadastradas, relacionadas com as instituições que as possuem.
+\item Testes Vocacionais: Será disponibilizada uma única opção de teste vocacional para os usuários.
+\item Perguntas: O teste vocacional tem 30 perguntas.
+\item Perfis: Para recomendar cursos aos usuários, são usados os 6 perfis definidos pela Teoria de Escolhas Vocacionais de John Holland.
 \end{itemize}
 
-De acordo com o número de registros estimados, o espaço ocupado no nosso banco de dados no momento de lançamento da plataforma será aproximadamente 3 MB.  Optamos por iniciar com esse volume de dados por ser adequado para a fase inicial do projeto. No entanto, é importante destacar que haverá uma expansão desses dados em futuras entregas da aplicação, conforme será detalhado no Capítulo \ref{escolhas-descartes}, Seção 5.3.
+De acordo com o número de registros estimados, o espaço ocupado no nosso banco de dados no momento de lançamento da plataforma é aproximadamente 250 MB. 
 
 
 \section{Arquitetura}
@@ -437,20 +455,23 @@ Na Figura \ref{arquitetura} é possível observar a representação em diagrama 
         \label{arquitetura}
     \end{figure}
 
-A seguir detalharemos cada uma das tecnologias escolhidas e como será feita a comunicação entre elas.
+Nos itens \ref{backend}, \ref{frontend} e \ref{banco} serão detalhadas cada uma das tecnologias escolhidas e como será feita a comunicação entre elas.
 
 \subsection{Back-End}
-No que diz respeito ao \textit{back-end}, adotamos o \textit{framework} \textbf{Spring Boot} em conjunto com a arquitetura \ac{msc}. O Spring Boot é uma escolha popular para o desenvolvimento de aplicativos Java devido à sua facilidade de configuração e rápida inicialização, como discutido nas Subseçõs 5.1.1 e 5.1.2 do Capítulo \ref{escolhas-descartes}. A arquitetura \ac{msc} divide a aplicação em três camadas distintas: \textbf{Model}, onde definimos as entidades e regras de negócio; \textbf{Service}, responsável pela lógica de negócio e manipulação dos dados; e \textbf{Controller}, que recebe as requisições \ac{http} e coordena a interação entre o cliente e o servidor. 
+\label{backend}
+No que diz respeito ao \textit{back-end}, adotou-se o \textit{framework} \textbf{Spring Boot} em conjunto com a arquitetura \ac{msc}. O Spring Boot é uma escolha popular para o desenvolvimento de aplicativos Java devido à sua facilidade de configuração e rápida inicialização, como discutido nas Subseçõs 5.1.1 e 5.1.2 do Capítulo \ref{escolhas-descartes}. A arquitetura \ac{msc} divide a aplicação em três camadas distintas: \textbf{Model}, onde são definidas as entidades e regras de negócio; \textbf{Service}, responsável pela lógica de negócio e manipulação dos dados; e \textbf{Controller}, que recebe as requisições \ac{http} e coordena a interação entre o cliente e o servidor. 
 
-Além das camadas Model, Service e Controller, também implementamos a camada \textbf{Repository} como parte da arquitetura \ac{msc}. A camada Repository é responsável pela interação com o banco de dados, encapsulando a lógica de acesso e manipulação dos dados. Utilizando interfaces e métodos específicos, o Repository abstrai as operações \ac{crud}, permitindo que as demais camadas da aplicação interajam com o banco de dados de forma desacoplada e eficiente.
+Além das camadas Model, Service e Controller, também foi implementada a camada \textbf{Repository} como parte da arquitetura \ac{msc}. A camada Repository é responsável pela interação com o banco de dados, encapsulando a lógica de acesso e manipulação dos dados. Utilizando interfaces e métodos específicos, o Repository abstrai as operações \ac{crud}, permitindo que as demais camadas da aplicação interajam com o banco de dados de forma desacoplada e eficiente.
 
 A utilização da arquitetura em camadas proporcionou diversos benefícios para o projeto. Em primeiro lugar, a separação de responsabilidades entre as camadas Model, Service, Controller e Repository facilitou a organização e compreensão do código-fonte, tornando-o mais legível e manutenível. Cada camada possui um propósito claro e bem definido, o que simplifica o processo de desenvolvimento e permite que diferentes equipes ou desenvolvedores trabalhem de forma independente em áreas específicas da aplicação.
 
 \subsubsection{Gerenciamento de dependências}
-Para o gerenciamento de dependências do projeto, optamos pelo \textbf{Maven}. Esta escolha se baseia nos inúmeros benefícios oferecidos por essa ferramenta. O Maven simplifica a gestão de dependências, permitindo que as bibliotecas necessárias sejam facilmente adicionadas ao projeto através de seu arquivo de configuração padrão (pom.xml). Além disso, o Maven automatiza tarefas como compilação, empacotamento e distribuição do projeto, tornando o processo de desenvolvimento mais eficiente e menos propenso a erros. Sua vasta gama de plugins oferece funcionalidades adicionais, como integração com ferramentas de teste e análise de código, promovendo uma abordagem mais completa para o desenvolvimento de \textit{software}. 
+Para o gerenciamento de dependências do projeto, optou-se pelo \textbf{Maven}. Esta escolha se baseia nos inúmeros benefícios oferecidos por essa ferramenta. O Maven simplifica a gestão de dependências, permitindo que as bibliotecas necessárias sejam facilmente adicionadas ao projeto através de seu arquivo de configuração padrão (pom.xml). Além disso, o Maven automatiza tarefas como compilação, empacotamento e distribuição do projeto, tornando o processo de desenvolvimento mais eficiente e menos propenso a erros. Sua vasta gama de plugins oferece funcionalidades adicionais, como integração com ferramentas de teste e análise de código, promovendo uma abordagem mais completa para o desenvolvimento de \textit{software}. 
 
 \subsection{Front-End}
-Nesse projeto, optamos por utilizar \textbf{React} em conjunto com \textbf{TypeScript} para o desenvolvimento do \textit{front-end}. Essa escolha foi motivada pela necessidade de construir uma interface de usuário dinâmica e reativa, com uma base de código robusta e escalável, conforme discutido nas Subseções 5.1.3 e 5.1.4 do Capítulo \ref{escolhas-descartes}, onde são abordadas a adoção do TypeScript e a utilização do React para garantir produtividade, qualidade do código. O React é uma biblioteca JavaScript amplamente adotada que nos permite criar componentes reutilizáveis e composicionais, facilitando a construção de interfaces complexas de forma modular. Além disso, a integração com TypeScript adiciona um sistema de tipos estáticos ao JavaScript, oferecendo benefícios como detecção de erros em tempo de compilação e melhorando a manutenibilidade do código. A arquitetura baseada em componentes nos permitiu organizar a aplicação de forma hierárquica, facilitando a manutenção e o teste dos diferentes elementos da interface.
+\label{frontend}
+
+Nesse projeto, utilizou-se \textbf{React} em conjunto com \textbf{TypeScript} para o desenvolvimento do \textit{front-end}. Essa escolha foi motivada pela necessidade de construir uma interface de usuário dinâmica e reativa, com uma base de código robusta e escalável, conforme discutido nas Subseções 5.1.3 e 5.1.4 do Capítulo \ref{escolhas-descartes}, onde são abordadas a adoção do TypeScript e a utilização do React para garantir produtividade, qualidade do código. O React é uma biblioteca JavaScript amplamente adotada que nos permite criar componentes reutilizáveis e composicionais, facilitando a construção de interfaces complexas de forma modular. Além disso, a integração com TypeScript adiciona um sistema de tipos estáticos ao JavaScript, oferecendo benefícios como detecção de erros em tempo de compilação e melhorando a manutenibilidade do código. A arquitetura baseada em componentes nos permitiu organizar a aplicação de forma hierárquica, facilitando a manutenção e o teste dos diferentes elementos da interface.
 
 Na figura \ref{aplicação}, é possível ver o QRcode da aplicação que foi publicada na internet:
 
@@ -462,9 +483,13 @@ Na figura \ref{aplicação}, é possível ver o QRcode da aplicação que foi pu
 \end{figure}
 \href{https://vocco.vercel.app}{https://vocco.vercel.app}
 
+Através do QRcode da \ac{url} da aplicação é possível acessar o site oficial Vocco.
+
 \newpage
 \subsection{Banco de dados}
-Em relação ao banco de dados,  optamos pelo \textbf{MySQL} devido à sua confiabilidade, desempenho e ampla adoção na indústria. O MySQL é um sistema de gerenciamento de banco de dados relacional que oferece recursos avançados de segurança e escalabilidade, sendo uma escolha sólida para aplicações de diferentes tamanhos e complexidades. Utilizamos o MySQL para armazenar e gerenciar os dados da aplicação, garantindo a integridade e disponibilidade das informações.
+\label{banco}
+
+Em relação ao banco de dados,  optou-se pelo \textbf{MySQL} devido à sua confiabilidade, desempenho e ampla adoção na indústria. O MySQL é um sistema de gerenciamento de banco de dados relacional que oferece recursos avançados de segurança e escalabilidade, sendo uma escolha sólida para aplicações de diferentes tamanhos e complexidades. O MySQL foi utilizado para armazenar e gerenciar os dados da aplicação, garantindo a integridade e disponibilidade das informações.
 
 
 \subsubsection{Modelo Entidade Relacionamento}
@@ -494,32 +519,32 @@ O \ac{der} é uma ferramenta muito importante na modelagem de dados. Ele oferece
         \label{der}
     \end{figure}
     
-Este diagrama oferece uma visão clara do processo de mapeamento dos relacionamentos entre as tabelas do banco de dados. Seguimos um padrão que envolve a criação de entidades associativas para representar os relacionamentos N-N. Para os relacionamentos 1-N, adicionamos a chave estrangeira na tabela que recebe o 'N' no mapeamento. Quanto aos relacionamentos 1-1 e 0-1, a escolha da tabela que recebe a chave estrangeira foi feita com base no que a equipe considerou mais relevante, levando em conta os requisitos específicos da plataforma.
+Este diagrama oferece uma visão clara do processo de mapeamento dos relacionamentos entre as tabelas do banco de dados. Foi seguido um padrão que envolve a criação de entidades associativas para representar os relacionamentos N-N. Para os relacionamentos 1-N, adicionou-se a chave estrangeira na tabela que recebe o 'N' no mapeamento. Quanto aos relacionamentos 1-1 e 0-1, a escolha da tabela que recebe a chave estrangeira foi feita com base no que a equipe considerou mais relevante, levando em conta os requisitos específicos da plataforma.
 
 \subsection{Integrações}
-Para aprimorar a experiência do usuário e garantir a precisão dos dados de endereço nos cadastros, optamos por integrar a \ac{api} do \textbf{ViaCEP}. Essa integração permite que, ao preencher os campos de endereço em formulários de cadastro, o sistema automaticamente consulte a \ac{api} do ViaCEP para obter informações detalhadas, como rua, bairro, cidade e estado, com base no \ac{cep} fornecido pelo usuário. Essa abordagem simplifica e agiliza o processo de preenchimento dos cadastros, além de garantir a consistência e atualização dos dados de endereço. Ao utilizar essa \ac{api}, estamos priorizando a precisão e a eficiência na coleta e manipulação das informações de endereço, proporcionando uma experiência mais fluida e intuitiva para os usuários.
+Para aprimorar a experiência do usuário e garantir a precisão dos dados de endereço nos cadastros, optou-se por integrar a \ac{api} do \textbf{ViaCEP}. Essa integração permite que, ao preencher os campos de endereço em formulários de cadastro, o sistema automaticamente consulte a \ac{api} do ViaCEP para obter informações detalhadas, como rua, bairro, cidade e estado, com base no \ac{cep} fornecido pelo usuário. Essa abordagem simplifica e agiliza o processo de preenchimento dos cadastros, além de garantir a consistência e atualização dos dados de endereço. Ao utilizar essa \ac{api}, priorizou-se a precisão e a eficiência na coleta e manipulação das informações de endereço, proporcionando uma experiência mais fluida e intuitiva para os usuários.
 
 \subsection{Infraestrutura}
-Por fim, para hospedar nosso projeto, optamos por utilizar serviços de hospedagem em nuvem para abrigar tanto o \textit{front-end} quanto o \textit{back-end}. Essa escolha foi motivada por diversos fatores que visam garantir uma maior eficiência e escalabilidade do sistema.
+Por fim, para hospedar o projeto, optou-se por utilizar serviços de hospedagem em nuvem para abrigar tanto o \textit{front-end} quanto o \textit{back-end}. Essa escolha foi motivada por diversos fatores que visam garantir uma maior eficiência e escalabilidade do sistema.
 
 Primeiramente, a hospedagem em nuvem oferece uma infraestrutura altamente flexível, permitindo ajustes rápidos de recursos conforme a demanda do aplicativo. Além disso, ela proporciona uma maior disponibilidade e confiabilidade, com garantias de tempo de atividade elevado e redundância de dados. A facilidade de implementação e gerenciamento também foi considerada, já que a infraestrutura em nuvem permite uma rápida implantação e manutenção simplificada do sistema.
 
 Por fim, os custos operacionais são otimizados, pois os serviços em nuvem geralmente seguem um modelo de pagamento conforme o uso, evitando gastos excessivos com infraestrutura desnecessária.
 
 \subsection{Front - End}
-Para hospedar o \textit{front-end}, escolhemos a plataforma \textbf{Vercel}, conhecida por sua facilidade de uso e escalabilidade. O \textit{front-end} foi desenvolvido com React e TypeScript, aproveitando os benefícios de uma tipagem estática para garantir um código mais robusto e menos propenso a erros. O uso do Vite como \textit{bundler} permitiu um processo de desenvolvimento mais rápido e eficiente, gerando builds otimizados e facilitando a implementação de novas funcionalidades. 
+Para hospedar o \textit{front-end}, foi utilizada a plataforma \textbf{Vercel}, conhecida por sua facilidade de uso e escalabilidade. O \textit{front-end} foi desenvolvido com React e TypeScript, aproveitando os benefícios de uma tipagem estática para garantir um código mais robusto e menos propenso a erros. O uso do Vite como \textit{bundler} permitiu um processo de desenvolvimento mais rápido e eficiente, gerando builds otimizados e facilitando a implementação de novas funcionalidades. 
 
 Além disso, é importante destacar que o \textit{front-end} se conecta ao \textit{back-end} através de requisições \ac{https}, garantindo a segurança e integridade dos dados transmitidos entre as partes. Essa abordagem assegura uma comunicação confiável e protegida entre os diferentes componentes do sistema, contribuindo para uma experiência segura e estável para os usuários.
 
 \subsubsection{Back - End}
-Para hospedar o \textit{back-end}, foi escolhida a plataforma \textbf{Railway}, conhecida por sua eficiência e facilidade de integração. Para o gerenciamento do banco de dados, optamos pelo MySQL, um sistema robusto e amplamente utilizado. A integração entre o Spring Boot e o MySQL foi facilitada através de um container Docker, gerado automaticamente pela plataforma Railway, proporcionando uma configuração que garante a conexão eficiente entre o \textit{core} da nossa aplicação e os dados persistidos, sendo que a conexão entre a aplicação e o banco foi realizada utilizando variáveis de ambiente definidas dentro do Railway, aumentando a segurança e confiabilidade. 
+Para hospedar o \textit{back-end}, foi escolhida a plataforma \textbf{Railway}, conhecida por sua eficiência e facilidade de integração. Para o gerenciamento do banco de dados, optou-se pelo MySQL, um sistema robusto e amplamente utilizado. A integração entre o Spring Boot e o MySQL foi facilitada através de um container Docker, gerado automaticamente pela plataforma Railway, proporcionando uma configuração que garante a conexão eficiente entre o \textit{core} da nossa aplicação e os dados persistidos, sendo que a conexão entre a aplicação e o banco foi realizada utilizando variáveis de ambiente definidas dentro do Railway, aumentando a segurança e confiabilidade. 
 
 
 
 \subsection{Escalabilidade}
-A escalabilidade é crucial para garantir que a Vocco possa se adaptar ao crescimento de forma eficaz, mantendo flexibilidade, confiabilidade, eficiência e manutenibilidade. Acreditamos  que tais metas serão alcançadas por meio de nossas decisões de utilizar serviços em nuvem e um sistema gerenciador de banco de dados que facilite o processo de expansão do nosso sistema. Neste momento, nosso foco está em manter uma \textbf{escalabilidade vertical}, o que implica em aumentar a capacidade de armazenamento em vez de adicionar mais servidores. Essa abordagem nos permite otimizar recursos e simplificar o gerenciamento, garantindo que Vocco possa se adaptar ao crescimento de maneira ágil e econômica.
+A escalabilidade é crucial para garantir que a Vocco possa se adaptar ao crescimento de forma eficaz, mantendo flexibilidade, confiabilidade, eficiência e manutenibilidade. Acredita-se  que tais metas serão alcançadas por meio de nossas decisões de utilizar serviços em nuvem e um sistema gerenciador de banco de dados que facilite o processo de expansão do nosso sistema. Neste momento, nosso foco está em manter uma \textbf{escalabilidade vertical}, o que implica em aumentar a capacidade de armazenamento em vez de adicionar mais servidores. Essa abordagem nos permite otimizar recursos e simplificar o gerenciamento, garantindo que Vocco possa se adaptar ao crescimento de maneira ágil e econômica.
 \subsection{Controle de versão}
- No desenvolvimento deste projeto, optamos por utilizar tanto o \textbf{Git} como o \textbf{GitHub} para o controle de versão do código-fonte. O Git foi escolhido como sistema de controle de versão devido à sua eficiência e robustez no gerenciamento de alterações de código, permitindo o acompanhamento do histórico de modificações, a colaboração entre os membros da equipe e a criação de branches para o desenvolvimento de novas funcionalidades de forma isolada. Além disso, o GitHub foi utilizado como plataforma de hospedagem remota dos repositórios Git, proporcionando uma maneira conveniente de compartilhar o código entre os membros da equipe, revisar alterações, gerenciar problemas e automatizar processos de \ac{ci} e \ac{cd}.
+ No desenvolvimento deste projeto, optou-se por utilizar tanto o \textbf{Git} como o \textbf{GitHub} para o controle de versão do código-fonte. O Git foi escolhido como sistema de controle de versão devido à sua eficiência e robustez no gerenciamento de alterações de código, permitindo o acompanhamento do histórico de modificações, a colaboração entre os membros da equipe e a criação de branches para o desenvolvimento de novas funcionalidades de forma isolada. Além disso, o GitHub foi utilizado como plataforma de hospedagem remota dos repositórios Git, proporcionando uma maneira conveniente de compartilhar o código entre os membros da equipe, revisar alterações, gerenciar problemas e automatizar processos de \ac{ci} e \ac{cd}.
 
  Na figura \ref{github}, é possível acessar o nosso repositório do GitHub do projeto: 
 
@@ -543,7 +568,7 @@ A adoção de convenções de código padronizadas é fundamental para garantir 
 
 \begin{itemize}
     \item \textbf{Back-End}
-     Seguiremos as convenções de código  para a linguagem Java conforme estabelecidas na documentação oficial da Oracle. Algumas das principais orientações incluem:
+     Seguiu-se as convenções de código  para a linguagem Java conforme estabelecidas na documentação oficial da Oracle. Algumas das principais orientações incluem:
      \begin{itemize}
         \item \textbf{Nomenclatura de Classes, Interfaces e Tipos:}
         Utilizar PascalCase, começando com letra maiúscula;
@@ -563,24 +588,24 @@ A adoção de convenções de código padronizadas é fundamental para garantir 
 \end{itemize}
 \begin{itemize}
     \item \textbf{Front-End}
-     Para o desenvolvimento \textit{front-end}, adotaremos as principais convenções de código:
+     Para o desenvolvimento \textit{front-end}, adotou-se as principais convenções de código:
      \begin{itemize}
         \item \textbf{Nomenclatura de variáveis:}
-        Utilizaremos camelCase, começando com letra minúscula;
+        Utilizou-se camelCase, começando com letra minúscula;
         \item \textbf{Nomenclatura de funções:}
-        Utilizaremos PascalCase, começando com letra maiúscula;
+        Utilizou-se PascalCase, começando com letra maiúscula;
         \item \textbf{Declaração de variáveis:}
-        Preferimos utilizar \textbf{let} ou \textbf{const} em vez de \textbf{var} para declarar variáveis, pois isso ajuda a evitar problemas de escopo;
+        Preferiu-se utilizar \textbf{let} ou \textbf{const} em vez de \textbf{var} para declarar variáveis, pois isso ajuda a evitar problemas de escopo;
         \item \textbf{Convenções de nome para constantes:}
-        Nomearemos constantes utilizando letras maiúsculas e palavras separadas por sublinhados;
+        As constantes foram nomeadas utilizando letras maiúsculas e palavras separadas por sublinhados;
         \item \textbf{Comentários:}
-        Faremos uso de comentários para documentar o código, explicando o propósito de funções e partes importantes do código;
+        Foi feito o uso de comentários para documentar o código, explicando o propósito de funções e partes importantes do código;
         \item \textbf{Tratamento de erros:}
-        Faremos uso de blocos try-catch para capturar e lidar com exceções, quando necessário;
+        O uso de blocos try-catch foi usado para capturar e lidar com exceções, quando necessário;
         \item \textbf{Ponto e vírgula:}
-         Apesar de o JavaScript permitir a omissão de ponto e vírgula no final das declarações, incluiremos sempre para evitar comportamentos inesperados;
+         Apesar de o JavaScript permitir a omissão de ponto e vírgula no final das declarações, a pontuação foi incluída sempre para evitar comportamentos inesperados;
         \item \textbf{Uso de aspas:}
-        Utilizaremos aspas duplas de forma consistente para \textit{strings}.
+        Utilizou-se aspas duplas de forma consistente para \textit{strings}.
  
      \end{itemize}
 \end{itemize}
@@ -588,22 +613,24 @@ A adoção de convenções de código padronizadas é fundamental para garantir 
 
 Os testes de \textit{software} são uma etapa fundamental no ciclo de desenvolvimento de \textit{software}, cujo objetivo é garantir a qualidade e a confiabilidade do produto final. Essas atividades consistem em verificar se o \textit{software} atende aos requisitos estabelecidos, se funciona corretamente em diferentes cenários de uso e se está livre de defeitos e erros. Os testes de \textit{software} podem abranger diversas áreas, como funcionalidade, desempenho, segurança e usabilidade, e são conduzidos por meio de técnicas e ferramentas específicas. 
 
-Para a realização dos testes utilizaremos as seguintes ferramentas:
+Para a realização dos testes foram utilizadas as seguintes ferramentas:
  
 \begin{itemize}
     \item \textbf{JUnit:}
-     Será utilizado no \textit{back-end} o \textit{framework} JUnit como ferramenta de testes automatizados. Ele oferece recursos que facilitam a criação e execução de testes, incluindo suporte para testes parametrizados, testes de exceção e integração com ferramentas que utilizaremos para o desenvolvimento.
+     Será utilizado no \textit{back-end} o \textit{framework} JUnit como ferramenta de testes automatizados. Ele oferece recursos que facilitam a criação e execução de testes, incluindo suporte para testes parametrizados, testes de exceção e integração com ferramentas que foram utilizadas para o desenvolvimento.
     \item \textbf{Jest:}
-    Para os testes automatizados no \textit{front-end}, escolhemos o Jest como nossa ferramenta principal. Ele abrange uma ampla gama de cenários de teste, desde os unitários mais simples até os de integração mais complexos, destacando-se pela sua facilidade e rapidez de uso. 
+    Para os testes automatizados no \textit{front-end}, o Jest foi escolhido como a ferramenta principal. Ele abrange uma ampla gama de cenários de teste, desde os unitários mais simples até os de integração mais complexos, destacando-se pela sua facilidade e rapidez de uso. 
     \item \textbf{Typescript EsLint:}
-    Para conduzir uma análise estática abrangente em nosso \textit{front-end}, decidimos adotar o TypeScript ESLint. Essa escolha se deve ao fato de que essa ferramenta combina as vantagens de \textit{linting} de código, e nos permite definir regras personalizadas, garantindo que sigamos as melhores práticas e padrões de codificação estabelecidos.
+    Para conduzir uma análise estática abrangente em nosso \textit{front-end}, decidiu-se adotar o TypeScript ESLint. Essa escolha se deve ao fato de que essa ferramenta combina as vantagens de \textit{linting} de código, e nos permite definir regras personalizadas, garantindo que as melhores práticas e padrões de codificação estabelecidos sejam seguidos.
     \item \textbf{SonarQube:}
-    Utilizaremos o SonarQube como nossa ferramenta de análise estática do \textit{back-end}. Ele realiza uma avaliação detalhada do código, identificando potenciais problemas, vulnerabilidades de segurança, \textit{bugs}, duplicações de código e padrões de código não conformes.
+     O SonarQube foi utilizado como ferramenta de análise estática do \textit{back-end}. Ele realiza uma avaliação detalhada do código, identificando potenciais problemas, vulnerabilidades de segurança, \textit{bugs}, duplicações de código e padrões de código não conformes.
+    \item \textbf{Cypress:}
+    O Cypress será utilizado para realizar testes automatizados de interface da plataforma, garantindo a funcionalidade e a experiência do usuário.    
 \end{itemize}
 \subsection{Design Patterns}
-Optamos por adotar o padrão \textbf{SOLID} como base para o desenvolvimento deste sistema, pois ele encapsula um conjunto de cinco princípios essenciais de design de software, idealizados por Robert C. Martin. Esses princípios são fundamentais para criar um código mais limpo, modular e fácil de manter. Ao seguirmos esses princípios, garantimos que nossas classes e módulos tenham responsabilidades bem definidas, promovendo a coesão e o baixo acoplamento, o que facilita tanto a compreensão do código quanto sua manutenção no futuro. 
+Optou-se por adotar o padrão \textbf{SOLID} como base para o desenvolvimento deste sistema, pois ele encapsula um conjunto de cinco princípios essenciais de design de software, idealizados por Robert C. Martin. Esses princípios são fundamentais para criar um código mais limpo, modular e fácil de manter. Ao seguir esses princípios, garante-se que as classes e módulos tenham responsabilidades bem definidas, promovendo a coesão e o baixo acoplamento, o que facilita tanto a compreensão do código quanto sua manutenção no futuro. 
 
-Também utilizaremos o padrão \ac{dto} para permitir a comunicação eficiente de dados entre diferentes partes do nosso sistema. Para representar esses objetos de transferência de dados, optaremos por utilizar \textit{\textbf{records}}, aproveitando as suas vantagens de imutabilidade e clareza.
+Também foi utilizado o padrão \ac{dto} para permitir a comunicação eficiente de dados entre diferentes partes do sistema. Para representar esses objetos de transferência de dados, optou-se por utilizar \textit{\textbf{records}}, aproveitando as suas vantagens de imutabilidade e clareza.
 
 \section{Segurança, Privacidade e Legislação}
 A segurança representa um aspecto essencial na arquitetura da Vocco. Dessa forma, nesta seção serão citadas as boas práticas e tecnologias usadas para garantir uma maior confiabilidade e segurança para os usuários de nossa aplicação.
@@ -634,7 +661,7 @@ Será utilizada essa ferramenta para criptografar as senhas dos usuários no ban
 
 
 \section{Viabilidade Financeira}
-A análise da viabilidade financeira demonstra o custo operacional estimado para o primeiro ano após o lançamento da plataforma. Esta avaliação considera os custos de mão de obra de desenvolvimento, registro de domínio, utilização dos serviços oferecidos pela plataforma de desenvolvimento na nuvem Railway para hospedar o \textit{back-end}, levando em conta um aumento de 30\% no processamento e uso dos recursos da mesma e também pela utilização da plataforma Vercel para hospedar o \textit{front-end}. Com base nesses parâmetros, segue a estimativa dos custos operacionais para o primeiro ano após o lançamento da plataforma.
+A análise da viabilidade financeira demonstra o custo operacional estimado para o primeiro ano após o lançamento da plataforma. Esta avaliação considera os custos de mão de obra de desenvolvimento, registro de domínio, utilização dos serviços oferecidos pela plataforma de desenvolvimento na nuvem Railway para hospedar o \textit{back-end}, levando em conta um aumento de 30\% no processamento e uso dos recursos da mesma e também pela utilização da plataforma Vercel para hospedar o \textit{front-end}, além do uso da plataforma S3 para armazenamento das imagens de perfil dos usuários. Com base nesses parâmetros, segue a estimativa dos custos operacionais para o primeiro ano após o lançamento da plataforma.
 
 \begin{table}[h!]
 \centering
@@ -651,7 +678,9 @@ Plataforma Railway & 702,92 & 58,58 \\
 \hline
 Plataforma Vercel & 1.225,2  & 102,10 \\
 \hline
-\textbf{Total} & \textbf{44.208,12} & \textbf{3.684,01} \\
+Plataforma S3 & 0,15 & 0,0125   \\
+\hline
+\textbf{Total} & \textbf{44.208,27} & \textbf{3.684,02} \\
 \hline
 \end{tabular}
 \label{table:estimativa-custos}
@@ -659,7 +688,7 @@ Plataforma Vercel & 1.225,2  & 102,10 \\
 \footnotesize \textbf{Fonte}: Elaborado pelo autor.
 \end{table}
 
-A estimativa dos custos operacionais detalhada, apresenta que o Custo de Desenvolvimento anual será calculado com base em 1.320 horas anuais de trabalho, cumpridas por uma gerente e quatro desenvolvedoras. A gerente será remunerada em R\$8,00 por hora, enquanto cada desenvolvedora será remunerada em R\$6,00 por hora. O valor de registro de domínio será de R\$40,00 o qual é uma taxa paga anualmente. Além disso, há o custo com a plataforma Railway em que são considerados os valores de utilização do plano mensal Hobby de R\$ 25,33, mais o valor adicional de R\$ 398,96 para o aumento de 30\% no uso dos recursos da plataforma, e esse valor é dividido em 12 meses. Por fim,  o custo com a plataforma Vercel será de R\$102,10 com o plano mensal Pró. Esses valores são apresentados  na Tabela \ref{table:detalhamento-custos} a seguir:
+A estimativa dos custos operacionais detalhada, apresenta que o Custo de Desenvolvimento anual será calculado com base em 1.320 horas anuais de trabalho, cumpridas por uma gerente e quatro desenvolvedoras. A gerente será remunerada em R\$8,00 por hora, enquanto cada desenvolvedora será remunerada em R\$6,00 por hora. O valor de registro de domínio será de R\$40,00 o qual é uma taxa paga anualmente. Além disso, há o custo com a plataforma Railway em que são considerados os valores de utilização do plano mensal Hobby de R\$ 25,33, mais o valor adicional de R\$ 398,96 para o aumento de 30\% no uso dos recursos da plataforma, e esse valor é dividido em 12 meses. Ademais,  o custo com a plataforma Vercel será de R\$102,10 com o plano mensal Pró. Por fim, existe também o custo de utilização do S3 que representa o valor mais baixo entre os custos do projeto. Considerando que cada imagem tem em média 200 KB, o total de armazenamento é de 0,2 GB. Com o preço de US 0,0125 por GB, o custo mensal é de apenas US \$ 0,0025, ou R\$ 0,01, considerando uma taxa de câmbio de R\$ 5,00 por dólar. O custo anual totaliza US 0,03, ou R\$ 0,15. Esses valores são apresentados  na Tabela \ref{table:detalhamento-custos} a seguir:
 
 \begin{table}[h!]
 \centering
@@ -680,7 +709,9 @@ Plataforma Railway & 30\% de uso adicional & 398,96 & 33,25 \\
 \hline
 Plataforma Vercel & Plano Pró & 1.225,20 & 102,10 \\
 \hline
-\textbf{Total} & & \textbf{44.208,12} & \textbf{3.684,01} \\
+Plataforma S3 & Armazenamento de imagens & 0,15 & 0,0125   \\
+\hline
+\textbf{Total} & & \textbf{44.208,27} & \textbf{3.684,02} \\
 \hline
 \end{tabular}
 \label{table:detalhamento-custos}
@@ -688,7 +719,7 @@ Plataforma Vercel & Plano Pró & 1.225,20 & 102,10 \\
 \footnotesize \textbf{Fonte}: Elaborado pelo autor.
 \end{table}
 
-Dessa forma, a estimativa de Custo Operacional anual será de R\$44.208,12 e mensal de R\$3.684,01, como apresentado nas tabelas anteriores.
+Dessa forma, a estimativa de Custo Operacional anual será de R\$44.208,27 e mensal de R\$3.684,02, como apresentado nas tabelas anteriores.
 
 
 \subsection{Monetização}
@@ -716,7 +747,7 @@ Comissão de Vendas (1,5\% sobre vendas) & 2.736,00 & 228,00 \\
 \footnotesize \textbf{Fonte}: Elaborado pelo autor.
 \end{table}
 
-Levando em consideração uma base estimada de 1.000 usuários ativos mensalmente e assumindo uma taxa de conversão de 1\% desses usuários em vendas efetivas, projetamos uma receita mensal fixa no valor de R\$ 3.600,00 e comissão de vendas no valor de R\$ 228,00. Dessa forma, a estimativa total de receita anual será de R\$ 45.936,00 e mensal de R\$ 3.828,00, como foi apresentado pela Tabela \ref{table:estimativa-receitas}.
+Levando em consideração uma base estimada de 1.000 usuários ativos mensalmente e assumindo uma taxa de conversão de 1\% desses usuários em vendas efetivas, projeta-se uma receita mensal fixa no valor de R\$ 3.600,00 e comissão de vendas no valor de R\$ 228,00. Dessa forma, a estimativa total de receita anual será de R\$ 45.936,00 e mensal de R\$ 3.828,00, como foi apresentado pela Tabela \ref{table:estimativa-receitas}.
 
 
 \section{Fases de Entrega}
@@ -725,7 +756,7 @@ As fases de entrega delimitam as datas das principais entregas do sistema para a
 
 \subsection{ Prova de Conceito (POC)}
 
-Para a prova de conceito desenvolvemos o requisito de manutenção das \ac{ies} cadastradas na plataforma Vocco, concebida como uma parte essencial do produto final planejado. Destinada aos administradores do sistema, essa funcionalidade foi desenvolvida para proporcionar uma gestão eficiente das instituições de ensino cadastradas, englobando desde o cadastro até associações com cursos e políticas públicas. 
+Para a prova de conceito foi desenvolvido o requisito de manutenção das \ac{ies} cadastradas na plataforma Vocco, concebida como uma parte essencial do produto final planejado. Destinada aos administradores do sistema, essa funcionalidade foi desenvolvida para proporcionar uma gestão eficiente das instituições de ensino cadastradas, englobando desde o cadastro até associações com cursos e políticas públicas. 
 
 As funcionalidades entregues foram:
 
@@ -735,7 +766,7 @@ As funcionalidades entregues foram:
     \item \textbf{Listagem}: Visualizar todas as instituições ativas e inativas.
     \item \textbf{Detalhamento}: Acessar informações específicas de cada instituição.
     \item \textbf{Alteração}: Modificar dados cadastrais conforme necessário.
-    \item \textbf{Exclusão}: Implementamos exclusão lógica, definindo o campo 'ativo' como falso. 
+    \item \textbf{Exclusão}: Implementou-se exclusão lógica, definindo o campo 'ativo' como falso. 
     \item \textbf{Associação com Curso}: Vincular instituições a cursos específicos.
     \item \textbf{Associação com Política Pública}: Integrar instituições às políticas de entrada e permanência oferecidas.
 \end{itemize}
@@ -745,14 +776,31 @@ As funcionalidades entregues foram:
 
 \subsection{Produto Mínimo Viável (MVP)}
 
-Na entrega do MVP, além do que foi desenvolvido na \ac{poc}, será entregue a funcionalidade principal do sistema, que se trata do preenchimento do teste vocacional  bem como a recomendação dos cursos e áreas que mais se encaixam no perfil do estudante, a depender das respostas enviadas. Além disso, para essa funcionalidade ser entregue é necessário que o cadastro dos estudantes também já esteja implementado. Esta entrega será feita no mês de junho de 2024.
+Na entrega do \ac{mvp}, além do que foi desenvolvido na \ac{poc}, foi entregue a funcionalidade principal do sistema, que se trata do preenchimento do teste vocacional  bem como a recomendação dos cursos e áreas que mais se encaixam no perfil do estudante, a depender das respostas enviadas. Além disso, para essa funcionalidade ser entregue foi necessário que o cadastro dos estudantes também já estivesse implementado. 
 
 
 \subsection{Produto Final}
 
-No Produto Final será entregue o projeto completo, contendo todas as funcionalidades propostas, como o teste vocacional, cadastro de administradores, cadastros de cursos e áreas, disponibilização das informações das Universidades estaduais do Estado de São Paulo, e as universidades Federais do Brasil, bem como todas as funcionalidades definidas anteriormente. É importante destacar que, durante o desenvolvimento do projeto, devido à sua complexidade e ao foco principal da aplicação, foi decidido descartar a integração com instituições estrangeiras que aceitam a nota do ENEM, conforme discutido na Seção 5.2 do Capítulo \ref{escolhas-descartes}. Esta entrega será feita no mês de dezembro de 2024.
+O Produto final consiste na entrega do projeto completo, incluindo todas as funcionalidades propostas. Essas funcionalidades foram desenvolvidas para atender tanto os estudantes quanto os administradores, como detalhado a seguir:
 
+\textbf{Funcionalidades para os estudantes:}  
+\begin{itemize}
+    \item Cadastro e gerenciamento de conta pessoal;  
+    \item Realização de teste vocacional com recomendação de cursos, baseado na compatibilidade do estudante com os perfis vocacionais; 
+    \item Acesso às informações detalhadas sobre universidades estaduais, municipais e federais do Brasil, além das Etecs do estado de São Paulo;  
+    \item Consulta às informações dos cursos cadastrados. 
+\end{itemize}
 
+\textbf{Funcionalidades para os administradores:}  
+\begin{itemize}
+    \item Gerenciamento das perguntas do teste vocacional;  
+    \item Gerenciamento de outros administradores do sistema;  
+    \item Gerenciamento dos estudantes cadastrados na plataforma;
+    \item Gerenciamento dos cursos cadastrados na plataforma;  
+    \item Gerenciamento das instituições cadastradas.  
+\end{itemize}
+
+É importante ressaltar que, devido à complexidade do projeto e ao foco principal da aplicação, foi decidido não incluir a integração com instituições estrangeiras que aceitam a nota do ENEM. Esta decisão foi tomada com base nas discussões apresentadas na Seção 6.2 do Capítulo \ref{escolhas-descartes}.  
 
 \newpage
 
@@ -764,7 +812,7 @@ Ao longo do desenvolvimento do projeto, o progresso foi acompanhado através de 
 \begin{figure}[ht]
         \centering
 \includegraphics[width=0.85\textwidth]{images/tabela-metricas.png}
-        \caption{Tabela de métricas do projeto primeiro semestre 2024}
+        \caption{Tabela de métricas do projeto segundo semestre 2024}
         \label{fig:enter-label}
     \end{figure}
 As métricas representam numericamente o andamento do projeto, demonstrando quais foram os períodos de maior atividade do grupo e o tamanho do projeto como um todo.
@@ -877,11 +925,11 @@ Na figura \ref{fig:rankingAutoresBack} é apresentado o ranking dos autores com 
 
 \newpage
 
-Na figura \ref{fig:arquivosPorDataBack} é apresentado o gráfico referente ao número de arquivos adicionados e número de linhas de código no repositório do projeto \textit{back-end} do GitHub no decorrer do primeiro semestre de 2024.
+Na figura \ref{fig:arquivosPorDataBack} é apresentado o gráfico referente ao número de arquivos adicionados e número de linhas de código no repositório do projeto \textit{back-end} do GitHub no decorrer do segundo semestre de 2024.
 
 \begin{figure}[ht]
         \centering
-\includegraphics[width=1.0\textwidth]{images/arquivos-por-data-stats-back.jpg}
+\includegraphics[width=1.0\textwidth]{images/arquivos-por-data-stats-back.png}
         \caption{Gráfico com a relação número de arquivos adicionados e linhas de código}
         \label{fig:arquivosPorDataBack}
     \end{figure}
@@ -991,7 +1039,7 @@ Na figura \ref{fig:rankingAutoresFront} é apresentado o ranking dos autores com
 
 \newpage
 
-Na figura \ref{fig:numeroLinhasFront} é apresentado o gráfico referente ao número de arquivos adicionados e número de linhas de código no repositório do projeto \textit{front-end} do GitHub no decorrer do primeiro semestre de 2024.
+Na figura \ref{fig:numeroLinhasFront} é apresentado o gráfico referente ao número de arquivos adicionados e número de linhas de código no repositório do projeto \textit{front-end} do GitHub no decorrer do segundo semestre de 2024.
 
 \begin{figure}[ht]
         \centering
@@ -1004,7 +1052,7 @@ Na figura \ref{fig:tiposdeArquivosFront} são apresentados os dados referentes a
 
 \begin{figure}[ht]
         \centering
-\includegraphics[width=1.0\textwidth]{images/tipos-arquivos-stats-front.png}
+\includegraphics[width=1.0\textwidth]{images/tipo-arquivos-stats-front.png}
         \caption{Tipos de arquivos presentes no repositório do projeto \textit{front-end} do GitHub}
         \label{fig:tiposdeArquivosFront}
     \end{figure}
@@ -1016,7 +1064,7 @@ Na figura \ref{fig:infoArquivosFront} são apresentados os dados gerais referent
 
     \begin{figure}[ht]
         \centering
-\includegraphics[width=0.5\textwidth]{images/info-arquivos-stats-front.jpg}
+\includegraphics[width=0.5\textwidth]{images/info-arquivos-stats-front.png}
         \caption{Dados de arquivos presentes no repositório do projeto \textit{front-end}}
         \label{fig:infoArquivosFront}
     \end{figure}

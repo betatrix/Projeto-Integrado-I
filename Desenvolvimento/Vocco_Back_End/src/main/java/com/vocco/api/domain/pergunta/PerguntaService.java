@@ -33,10 +33,15 @@ public class PerguntaService {
 
     public DadosDetalhamentoPergunta editar(DadosAtualizacaoPergunta dados){
         Pergunta pergunta = repository.getReferenceById(dados.id());
+        if(dados.perfilId() != null){
+            Perfil perfil = perfilRepository.getReferenceById(dados.perfilId());
+            pergunta.setPerfil(perfil);
+        }
         pergunta.editarInformacoes(dados);
         repository.save(pergunta);
         return new DadosDetalhamentoPergunta(pergunta);
     }
+
     public DadosDetalhamentoPergunta detalhar(Long id){
         return new DadosDetalhamentoPergunta(repository.getReferenceById(id));
     }
@@ -44,6 +49,11 @@ public class PerguntaService {
     public List<DadosListagemPergunta> listarPorTeste(Long testeId){
         return repository.findAllByAtivoTrueAndTesteId(testeId).stream().map(DadosListagemPergunta::new).toList();
     }
+
+    public List<DadosListagemPergunta> listar(){
+        return repository.findAll().stream().map(DadosListagemPergunta::new).toList();
+    }
+
     public void excluir(Long id){
         Pergunta pergunta = repository.getReferenceById(id);
         pergunta.excluir();

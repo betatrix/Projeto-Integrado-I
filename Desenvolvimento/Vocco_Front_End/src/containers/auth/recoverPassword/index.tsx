@@ -4,25 +4,28 @@ import CircularProgress from '@mui/material/CircularProgress';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { recuperacaoSenha } from '../../../services/studentService';
 import {
-    Global,
-    LoginContainer,
-    CustomField,
-    CustomButton,
-    CustomInputLabel,
-    Header,
-    Paragraph,
-    FormContainer,
-    CustomLink,
-    Container,
-    RightPanel,
-    BackButton,
-    SubText,
-} from './styles';
-import { Alert, Snackbar } from '@mui/material';
+    globalStyles,
+    backButton,
+    loginContainer,
+    formContainer,
+    containerStyles,
+    headerStyles,
+    paragraphStyles,
+    subTextStyles,
+    customLinkStyles,
+    customFieldStyles,
+    customInputLabelStyles,
+    sidePanelStyles,
+    recoverButton,
+    headerRecover,
+} from './styles'; // Importando os novos estilos
+import { Alert, Box, Button, FilledInput, InputLabel, Snackbar, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import { SxProps, Theme } from '@mui/material/styles';
+import LanguageMenu from '../../../components/translationButton';
 
 const RecuperarSenha: React.FC = () => {
-    const{ t } = useTranslation();
+    const { t } = useTranslation();
 
     const [email, setEmail] = useState('');
     const [loading, setLoading] = useState(false);
@@ -53,21 +56,16 @@ const RecuperarSenha: React.FC = () => {
 
             if (response === 200) {
                 setShowSuccessMessage(true);
-                console.log('Sucesso ao enviar email:', response);
             } else {
                 setShowErrorMessage(true);
-                console.error(response);
             }
-
         } catch (error) {
             setShowErrorMessage(true);
-            console.error('Erro ao enviar email:', error);
         } finally {
             setLoading(false);
         }
     };
 
-    // Função para fechar o pop-up
     const handleCloseSuccessMessage = () => {
         setShowSuccessMessage(false);
     };
@@ -78,39 +76,46 @@ const RecuperarSenha: React.FC = () => {
 
     return (
         <>
-            <Global />
-            <style>
-                @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
-            </style>
-            <Container>
-                <BackButton startIcon={<ArrowBackIcon />}>
-                    <CustomLink to={'/login'}>{t('backButton')}</CustomLink>
-                </BackButton>
-                <RightPanel></RightPanel>
-                <LoginContainer>
-                    <Header variant="h4">{t('forgotTitle')}</Header>
-                    <Paragraph>
+            <Box sx={globalStyles as SxProps<Theme>} />
+            <Box sx={containerStyles}>
+                <Box sx={sidePanelStyles} />
+                <Box sx={headerRecover}>
+                    <Button sx={backButton} startIcon={<ArrowBackIcon />}>
+                        <Typography component="a" href="/login" sx={customLinkStyles}>
+                            {t('backButton')}
+                        </Typography>
+                    </Button>
+                    <LanguageMenu />
+                </Box>
+                <Box sx={loginContainer}>
+                    <Typography component="h4" sx={headerStyles}>
+                        {t('forgotTitle')}
+                    </Typography>
+                    <Typography sx={paragraphStyles}>
                         {t('forgotText')}
-                    </Paragraph>
+                    </Typography>
 
-                    <FormContainer onSubmit={handleSubmit}>
-                        {emailError && <SubText>{t('forgotError1')}</SubText>}
-                        <FormControl variant="filled" >
-                            <CustomInputLabel htmlFor="email">{t('forgotField')}</CustomInputLabel>
-                            <CustomField
+                    <Box component="form" sx={formContainer} onSubmit={handleSubmit}>
+                        {emailError && <Box sx={subTextStyles}>{t('forgotError1')}</Box>}
+                        <FormControl variant="filled">
+                            <InputLabel component="label" htmlFor="email" sx={customInputLabelStyles}>
+                                {t('forgotField')}
+                            </InputLabel>
+                            <FilledInput
                                 id="email"
-                                type={'email'}
+                                type="email"
                                 value={email}
                                 onChange={handleEmailChange}
+                                sx={customFieldStyles}
                             />
                         </FormControl>
 
                         <FormControl>
-                            <CustomButton variant="contained" size="large" type="submit" >
+                            <Box component="button" sx={recoverButton} type="submit">
                                 {loading ? <CircularProgress size={24} color="inherit" /> : t('forgotButton')}
-                            </CustomButton>
+                            </Box>
                         </FormControl>
-                    </FormContainer>
+                    </Box>
 
                     <Snackbar
                         anchorOrigin={{
@@ -121,7 +126,7 @@ const RecuperarSenha: React.FC = () => {
                         autoHideDuration={6000}
                         onClose={handleCloseSuccessMessage}
                     >
-                        <Alert onClose={handleCloseSuccessMessage} severity="success" sx={{ width: '100%' }}>
+                        <Alert onClose={handleCloseSuccessMessage} severity="success" sx={{ width: '100%', fontFamily: 'Poppins, sans-serif', fontSize: '1.1rem'}}>
                             {t('forgotSucess')}
                         </Alert>
                     </Snackbar>
@@ -135,12 +140,12 @@ const RecuperarSenha: React.FC = () => {
                         autoHideDuration={6000}
                         onClose={handleCloseErrorMessage}
                     >
-                        <Alert onClose={handleCloseErrorMessage} severity="error" sx={{ width: '100%' }}>
+                        <Alert onClose={handleCloseErrorMessage} severity="error" sx={{ width: '100%', fontFamily: 'Poppins, sans-serif', fontSize: '1.1rem' }}>
                             {t('forgotError2')}
                         </Alert>
                     </Snackbar>
-                </LoginContainer>
-            </Container>
+                </Box>
+            </Box>
         </>
     );
 };

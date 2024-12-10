@@ -1,6 +1,5 @@
 package com.vocco.api.controller;
 
-import com.vocco.api.domain.curso.dto.DadosListagemCurso;
 import com.vocco.api.domain.estudante.EstudanteService;
 import com.vocco.api.domain.estudante.dto.DadosAtualizacaoEstudante;
 import com.vocco.api.domain.estudante.dto.DadosCadastroEstudante;
@@ -11,6 +10,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -20,6 +20,11 @@ import java.util.List;
 public class EstudanteController {
     @Autowired
     private EstudanteService service;
+
+    @PostMapping("/adicionarFoto")
+    public DadosDetalhamentoEstudante adicionarFoto(@RequestParam Long id, @Valid MultipartFile arquivo){
+        return service.adicionarFoto(id, arquivo);
+    }
 
     @PostMapping("/cadastro")
     @Transactional

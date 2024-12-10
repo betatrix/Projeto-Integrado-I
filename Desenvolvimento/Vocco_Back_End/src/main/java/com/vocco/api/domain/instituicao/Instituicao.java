@@ -28,6 +28,8 @@ public class Instituicao {
     private String sigla;
     private Boolean ativo;
     private String formaIngresso;
+    @Enumerated(EnumType.STRING)
+    private TipoInstituicaoCurso tipo;
     @Embedded
     private Endereco endereco;
 
@@ -37,16 +39,19 @@ public class Instituicao {
         this.notaMec = dados.notaMec();
         this.sigla = dados.sigla();
         this.formaIngresso = dados.formaIngresso();
+        this.tipo = dados.tipo();
         this.ativo = true;
         this.endereco = new Endereco(dados.endereco());
     }
 
     public void editarInformacoes(DadosAtualizacaoInstituicao dados){
         atribuirSeForNaoNulo(dados.nome(), this::setNome);
+        atribuirSeForNaoNulo(dados.tipo(), this::setTipo);
         atribuirSeForNaoNulo(dados.site(), this::setSite);
         atribuirSeForNaoNulo(dados.notaMec(), this::setNotaMec);
         atribuirSeForNaoNulo(dados.sigla(), this::setSigla);
         atribuirSeForNaoNulo(dados.formaIngresso(), this::setFormaIngresso);
+        atribuirSeForNaoNulo(dados.ativo(), this::setAtivo);
     }
 
     public void excluir(){

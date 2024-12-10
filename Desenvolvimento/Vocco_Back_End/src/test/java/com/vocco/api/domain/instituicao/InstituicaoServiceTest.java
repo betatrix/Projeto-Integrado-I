@@ -46,6 +46,7 @@ class InstituicaoServiceTest {
                 "UF",
                 BigDecimal.valueOf(4.5),
                 "SISU",
+                TipoInstituicaoCurso.SUPERIOR,
                 dadosCadastroEndereco
         );
 
@@ -68,6 +69,8 @@ class InstituicaoServiceTest {
                 BigDecimal.valueOf(4.7),
                 "NA",
                 "SISU",
+                TipoInstituicaoCurso.SUPERIOR,
+                true,
                 dadosAtualizacaoEndereco
         );
 

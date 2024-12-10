@@ -1,4 +1,7 @@
-import { ReactNode, useState, useEffect, createContext } from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { ReactNode, useState, useEffect, createContext } from 'react';
+import { decryptData, encryptData } from '../services/encryptionService';
+import { StudentUpdateForm } from '../types/studentTypes';
 
 interface AuthContextType {
     isAuthenticated: boolean;
@@ -8,6 +11,8 @@ interface AuthContextType {
     role: string | null;
     login: (token: string, user: any, role: string, student: any, admin: any) => void;
     logout: () => void;
+    updateUserPhoto: (fotoUrl: string) => void;
+    updateStudentInfo: (data: StudentUpdateForm) => void;
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -51,6 +56,59 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         window.location.href = '/login';
     };
 
+    const updateUserPhoto = (fotoUrl: string) => {
+        setUser((prevUserEncrypted: any) => {
+            const prevUserData = decryptData(prevUserEncrypted);
+
+            if (!prevUserData) {
+                console.error('Erro: Usuário anterior não encontrado');
+                return null;
+            }
+
+            const prevUser = JSON.parse(prevUserData);
+
+            const updatedUser = {
+                ...prevUser,
+                fotoDePerfil: fotoUrl,
+            };
+
+            const updatedUserEncrypted = encryptData(JSON.stringify(updatedUser));
+
+            // Atualizar o localStorage com o user criptografado
+            localStorage.setItem('user', updatedUserEncrypted);
+
+            return updatedUserEncrypted;
+        });
+    };
+
+    const updateStudentInfo = (data: StudentUpdateForm) => {
+        setUser((prevStudentEncrypted: any) => {
+            const prevStudentData = decryptData(prevStudentEncrypted);
+
+            if (!prevStudentData) {
+                console.error('Erro: Usuário anterior não encontrado');
+                return null;
+            }
+
+            const prevStudent = JSON.parse(prevStudentData);
+
+            const updatedStudent = {
+                ...prevStudent,
+                nome: data.nome,
+                email: data.email,
+                dataNascimento: data.dataNascimento,
+                celular: data.celular,
+                nivelEscolar: data.nivelEscolar,
+            };
+
+            const updatedStudentEncrypted = encryptData(JSON.stringify(updatedStudent));
+
+            localStorage.setItem('student', JSON.stringify(updatedStudentEncrypted));
+
+            return updatedStudentEncrypted;
+        });
+    };
+
     const checkTokenExpiration = () => {
         const tokenExpiration = localStorage.getItem('tokenExpiration');
         if (tokenExpiration && Date.now() > parseInt(tokenExpiration)) {
@@ -82,7 +140,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                     setAdmin(admin);
                 }
             } catch (error) {
-                console.error('Erro ao analisar os dados do usuário:', error);
+                console.error('Erro ao analisar os dados do usuário');
                 logout();
             }
         }
@@ -94,7 +152,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ isAuthenticated, user, student, admin, role, login, logout }}>
+        <AuthContext.Provider value={{ isAuthenticated, user, student, admin, role, login, logout, updateUserPhoto, updateStudentInfo }}>
             {children}
         </AuthContext.Provider>
     );

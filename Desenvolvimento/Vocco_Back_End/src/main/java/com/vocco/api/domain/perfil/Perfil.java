@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Getter
 @Setter
@@ -17,6 +16,8 @@ public class Perfil {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String descricao;
+    private String descricaoIngles;
     private String detalhes;
-
+    private String detalhesIngles;
+    private String imagem;
 }

@@ -1,15 +1,17 @@
 package com.vocco.api.domain.pergunta.dto;
 
-import com.vocco.api.domain.estudante_perfil.EstudantePerfil;
 import com.vocco.api.domain.perfil.dto.DadosListagemPerfil;
 import com.vocco.api.domain.pergunta.Pergunta;
 
 public record DadosDetalhamentoPergunta(
+        Long id,
         String texto,
+        String textoIngles,
         Boolean ativo,
-        DadosListagemPerfil perfil
+        DadosListagemPerfil perfil,
+        String imagem
 ) {
     public DadosDetalhamentoPergunta(Pergunta pergunta){
-        this(pergunta.getTexto(), pergunta.isAtivo(), new DadosListagemPerfil(pergunta.getPerfil()));
+        this(pergunta.getId(), pergunta.getTexto(), pergunta.getTextoIngles(), pergunta.isAtivo(), new DadosListagemPerfil(pergunta.getPerfil()), pergunta.getImagem());
     }
 }

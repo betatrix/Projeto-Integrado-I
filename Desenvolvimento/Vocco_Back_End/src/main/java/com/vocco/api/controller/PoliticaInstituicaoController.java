@@ -1,8 +1,6 @@
 package com.vocco.api.controller;
 
 
-import com.vocco.api.domain.instituicao.dto.DadosListagemInstituicao;
-import com.vocco.api.domain.politica.dto.DadosDetalhamentoPolitica;
 import com.vocco.api.domain.politica_instituicao.PoliticaInstituicaoService;
 import com.vocco.api.domain.politica_instituicao.dto.DadosCadastroPoliticaInstituicao;
 import com.vocco.api.domain.politica_instituicao.dto.DadosDetalhamentoPoliticaInstituicao;
@@ -34,12 +32,12 @@ public class PoliticaInstituicaoController {
     }
 
     @GetMapping("/instituicao/{id}")
-    public ResponseEntity<List<DadosDetalhamentoPolitica>> buscarPoliticasPorInstituicao(@PathVariable Long id) {
+    public ResponseEntity<List<DadosDetalhamentoPoliticaInstituicao>> buscarPoliticasPorInstituicao(@PathVariable Long id) {
         return ResponseEntity.ok().body(service.buscarPoliticasPorInstituicao(id));
     }
 
     @GetMapping("/politica/{id}")
-    public ResponseEntity<List<DadosListagemInstituicao>> buscarInstituicoesPorPolitica(@PathVariable Long id) {
+    public ResponseEntity<List<DadosDetalhamentoPoliticaInstituicao>> buscarInstituicoesPorPolitica(@PathVariable Long id) {
         return ResponseEntity.ok().body(service.buscarInstituicoesPorPolitica(id));
     }
 

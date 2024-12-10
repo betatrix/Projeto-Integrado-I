@@ -24,20 +24,25 @@ public class Pergunta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String texto;
+    private String textoIngles;
     private Boolean ativo;
     @ManyToOne
     private Teste teste;
     @ManyToOne
     private Perfil perfil;
+    private String imagem;
+
 
     public Pergunta(DadosCadastroPergunta dados, Teste teste, Perfil perfil){
         this.texto = dados.texto();
         this.ativo = true;
         this.teste = teste;
         this.perfil = perfil;
+        this.textoIngles = dados.textoIngles();
     }
     public void editarInformacoes(DadosAtualizacaoPergunta dados){
         atribuirSeNaoForNulo(dados.texto(), this::setTexto);
+        atribuirSeNaoForNulo(dados.textoIngles(), this::setTextoIngles);
     }
 
     private <T> void atribuirSeNaoForNulo(T valor, Consumer<T> setter){

@@ -18,7 +18,10 @@ import {
     StepLabel,
     Grid,
     Modal,
+    InputAdornment,
+    TablePagination,
 } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
 
 import { useInstitution } from '../../../context/institutionContext';
 import { buscarCursos } from '../../../services/courseService';
@@ -27,7 +30,7 @@ import Step from '@mui/material/Step';
 import { CourseForm } from '../../../types/courseTypes';
 import { useNavigate } from 'react-router-dom';
 import AdminHeader from '../../../components/adminHeader';
-import Footer from '../../../components/adminFooter';
+import Footer from '../../../components/homeFooter';
 import * as yup from 'yup';
 
 const notaMecSchema = yup
@@ -35,8 +38,7 @@ const notaMecSchema = yup
     .nullable()
     .typeError('A nota deve ser um número')
     .min(1, 'Nota mínima 1')
-    .max(5, 'Nota máxima 5')
-    .required('A nota é obrigatória');
+    .max(10, 'Nota máxima 10');
 
 export const BuscaCurso: React.FC = () => {
     const { institutionId } = useInstitution();
@@ -59,22 +61,19 @@ export const BuscaCurso: React.FC = () => {
     const [confirmModalOpen, setConfirmModalOpen] = useState(false);
 
     useEffect(() => {
-        if (!institutionId) {
-            navigate('/cadastro');
-        } else {
-            const fetchCourses = async () => {
-                setLoading(true);
-                try {
-                    const fetchedCourses = await buscarCursos();
-                    setCourses(fetchedCourses);
-                    setFilteredCourses(fetchedCourses);
-                } catch (error) {
-                    console.error('Failed to fetch courses:', error);
-                }
-                setLoading(false);
-            };
-            fetchCourses();
-        }
+        const fetchCourses = async () => {
+            setLoading(true);
+            try {
+                const fetchedCourses = await buscarCursos();
+                setCourses(fetchedCourses);
+                setFilteredCourses(fetchedCourses);
+            } catch (error) {
+                console.error('Failed to fetch courses:', error);
+                throw error;
+            }
+            setLoading(false);
+        };
+        fetchCourses();
     }, [institutionId, navigate]);
 
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -118,7 +117,7 @@ export const BuscaCurso: React.FC = () => {
         if (hasSelectedCourse) {
             setConfirmModalOpen(true);
         } else {
-            alert('Selecione um curso para continuar!');
+            alert('Selecione um curso para adicionar!');
         }
     };
 
@@ -139,32 +138,56 @@ export const BuscaCurso: React.FC = () => {
                     notaMec,
                 }));
             if (selectedEntries.length > 0) {
-                for (const { notaMec, courseId } of selectedEntries) {
+                for (const { notaMec } of selectedEntries) {
                     await notaMecSchema.validate(notaMec);
-                    console.log(courseId);
                 }
-                const responses = await Promise.all(
+                await Promise.all(
                     selectedEntries.map(({ notaMec, courseId }) =>
                         cadastrarCursoInstituicao(institutionId, notaMec, courseId)
                     )
                 );
                 navigate('/politicas', { state: { institutionId } });
-                console.log('Cursos cadastrados com sucesso:', responses);
                 // alert('Cursos cadastrados com sucesso na Instituição');
             } else {
                 alert('Selecione um curso para continuar!');
             }
         } catch (error) {
-            console.error('Erro ao cadastrar cursos na instituição:', error);
             alert('Erro na validação das notas MEC.');
         }
         setConfirmModalOpen(false);
     };
 
+    const [page, setPage] = useState(0);
+    const [rowsPerPage, setRowsPerPage] = useState(5);
+
+    const handleChangePage = (_event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
+        setPage(newPage);
+    };
+
+    const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setRowsPerPage(parseInt(event.target.value, 10));
+        setPage(0);
+    };
+
+    const paginatedCourses = filteredCourses
+        .sort((a, b) => b.id - a.id)
+        .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
+
+    const totalPages = Math.ceil(filteredCourses.length / rowsPerPage);
+
+    const goToFirstPage = () => {
+        setPage(0);
+    };
+
+    const goToLastPage = () => {
+        setPage(totalPages - 1);
+    };
+
     return (
         <>
             <AdminHeader />
-            <Box sx={{ marginTop: '20px' }}>
+            <Box sx={{ marginTop: '20px', minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#F3F3F3' }}>
+                <Box sx={{ height: 90 }}></Box>
                 <Box sx={{ width: '100%' }}>
                     <Stepper activeStep={1} alternativeLabel>
                         {steps.map((label) => (
@@ -186,21 +209,68 @@ export const BuscaCurso: React.FC = () => {
                             marginBottom: '40px',
                         }}
                     >
-                        <Typography variant="h4" sx={{ mb: 2 }}>
-                            Cursos da Instituição
-                        </Typography>
-                        <TextField
-                            label="Pesquisar Curso"
-                            variant="standard"
-                            value={searchTerm}
-                            onChange={handleSearchChange}
-                            fullWidth
-                        />
+                        <Box sx={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', marginTop: 5, gap: 2, marginBottom: '30px' }}>
+                            <TextField
+                                label="Pesquisar Curso"
+                                variant="outlined"
+                                sx={{ width: '100%', fontFamily: 'Roboto, monospace', }}
+
+                                value={searchTerm}
+                                onChange={handleSearchChange}
+                                InputProps={{
+                                    endAdornment: (
+                                        <InputAdornment position="end">
+                                            <SearchIcon />
+                                        </InputAdornment>
+                                    ),
+                                }}
+
+                            />
+                            <Button variant="contained" sx={{
+                                height: '50px',
+                                fontSize: '17px',
+                                fontFamily: 'Roboto, monospace',
+                                color: 'white',
+                                backgroundColor: '#185D8E',
+                                fontWeight: 'bold',
+                                '&:hover': {
+                                    backgroundColor: '#104A6F',
+                                },
+                            }} onClick={handleOpenConfirmModal}>
+                                Adicionar
+                            </Button>
+                            <Button variant="contained" sx={{
+                                height: '50px',
+                                fontSize: '17px',
+                                fontFamily: 'Roboto, monospace',
+                                color: 'white',
+                                backgroundColor: '#185D8E',
+                                fontWeight: 'bold',
+                                '&:hover': {
+                                    backgroundColor: '#104A6F',
+                                },
+                            }} onClick={
+                                () => {
+                                    navigate('/politicas', { state: { institutionId } });
+                                }
+                            }>
+                                Continuar
+                            </Button>
+                        </Box>
                         {loading ? (
-                            <CircularProgress />
+                            <Box
+                                sx={{
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    height: '80vh',
+                                }}
+                            >
+                                <CircularProgress />
+                            </Box>
                         ) : (
                             <List>
-                                {filteredCourses.map((course) => (
+                                {paginatedCourses.map((course) => (
                                     <ListItem key={course.id} divider>
                                         <Checkbox
                                             checked={selectedCourses[course.id]?.isSelected || false}
@@ -219,7 +289,7 @@ export const BuscaCurso: React.FC = () => {
                                                 error={!!validationErrors[course.id]}
                                             >
                                                 <InputLabel htmlFor={`notaMec-${course.id}`}>
-                                                    Nota MEC
+                                                    Nota MEC|IDEB
                                                 </InputLabel>
                                                 <Input
                                                     id={`notaMec-${course.id}`}
@@ -242,22 +312,32 @@ export const BuscaCurso: React.FC = () => {
                                 ))}
                             </List>
                         )}
-                        <Grid container spacing={2} justifyContent="space-between">
-                            <Grid item xs={6} display="flex" justifyContent="flex-start">
-                                <Button
-                                    variant="outlined"
-                                    onClick={() => navigate('/cadastro')}
-                                >
-                                    Voltar
-                                </Button>
-                            </Grid>
-                            <Grid item xs={6} display="flex" justifyContent="flex-end">
-                                <Button variant="contained" onClick={handleOpenConfirmModal}>
-                                    Avançar
-                                </Button>
-                            </Grid>
-                        </Grid>
                     </Box>
+                </Box>
+                <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: 7 }}>
+                    <Button
+                        onClick={goToFirstPage}
+                        disabled={page === 0}
+                        sx={{ marginRight: 2, fontFamily: 'Roboto, monospace', fontWeight: 'bold' }}
+                    >
+                        Primeira Página
+                    </Button>
+                    <TablePagination
+                        rowsPerPageOptions={[5, 10, 25]}
+                        component="div"
+                        count={filteredCourses.length}
+                        rowsPerPage={rowsPerPage}
+                        page={page}
+                        onPageChange={handleChangePage}
+                        onRowsPerPageChange={handleChangeRowsPerPage}
+                    />
+                    <Button
+                        onClick={goToLastPage}
+                        disabled={page === totalPages - 1}
+                        sx={{ marginLeft: 2, fontFamily: 'Roboto, monospace', fontWeight: 'bold' }}
+                    >
+                        Última Página
+                    </Button>
                 </Box>
             </Box>
 
@@ -279,30 +359,68 @@ export const BuscaCurso: React.FC = () => {
                         p: 4,
                         width: '80%',
                         maxWidth: 400,
+                        borderRadius: '5px'
                     }}
                 >
-                    <Typography variant="h6" gutterBottom>
+                    <Typography variant="h6" component="h2" gutterBottom sx={{
+                        color: '#185D8E',
+                        fontFamily: 'Roboto, monospace',
+                        marginTop: 1,
+                        fontWeight: 'bold',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        textAlign: 'justify',
+                        mb: '5px'
+                    }}>
                         Confirmação
                     </Typography>
-                    <Typography variant="body1" gutterBottom>
+                    <Typography variant="body1" gutterBottom sx={{
+                        mt: 2,
+                        fontFamily: 'Poppins, sans-serif',
+                        textAlign: 'justify',
+                        mb: '10px'
+                    }}>
                         Você está prestes a adicionar os cursos selecionados à instituição.
                         Deseja continuar?
                     </Typography>
-                    <Grid container spacing={2} justifyContent="space-between">
-                        <Grid item xs={6} display="flex" justifyContent="flex-start">
-                            <Button variant="outlined" onClick={handleCloseConfirmModal}>
-                                Cancelar
+                    <Grid container spacing={2} justifyContent="space-between"
+                        sx={{ mt: 1 }}>
+                        <Grid item >
+                            <Button variant="contained" color="primary" onClick={handleConfirmCourses} sx={{
+                                height: '35px',
+                                fontSize: '17px',
+                                fontFamily: 'Roboto, monospace',
+                                color: 'white',
+                                backgroundColor: '#185D8E',
+                                fontWeight: 'bold',
+                                '&:hover': {
+                                    backgroundColor: '#104A6F',
+                                    color: 'white',
+                                }
+                            }}>
+                                Sim
                             </Button>
                         </Grid>
-                        <Grid item xs={6} display="flex" justifyContent="flex-end">
-                            <Button variant="contained" onClick={handleConfirmCourses}>
-                                Confirmar
+                        <Grid item>
+                            <Button variant="contained" onClick={handleCloseConfirmModal} sx={{
+                                height: '35px',
+                                fontSize: '17px',
+                                fontFamily: 'Roboto, monospace',
+                                color: 'white',
+                                backgroundColor: '#185D8E',
+                                fontWeight: 'bold',
+                                '&:hover': {
+                                    backgroundColor: '#104A6F',
+                                    color: 'white',
+                                }
+                            }}>
+                                Não
                             </Button>
                         </Grid>
+
                     </Grid>
                 </Box>
             </Modal>
-
             <Footer />
         </>
     );

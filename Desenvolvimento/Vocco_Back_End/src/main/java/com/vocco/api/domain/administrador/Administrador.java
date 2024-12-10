@@ -10,7 +10,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Objects;
 import java.util.function.Consumer;
@@ -25,11 +24,8 @@ public class Administrador {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String nome;
     private String cpf;
-    private String email;
-    private String senha;
     private String cargo;
     private String celular;
     @Embedded
@@ -44,21 +40,19 @@ public class Administrador {
     public Administrador(DadosCadastroAdministrador dados){
         this.nome = dados.nome();
         this.cpf = dados.cpf();
-        this.email = dados.email();
-        this.senha = new BCryptPasswordEncoder().encode(dados.senha());
         this.cargo = dados.cargo();
         this.celular = dados.celular();
         this.ativo = true;
         this.endereco = new Endereco(dados.endereco());
-        this.usuario = new Usuario(dados.email(), this.senha, UsuarioRole.ADMIN);
+        this.usuario = new Usuario(dados.email(), dados.senha(), UsuarioRole.ADMIN);
     }
 
     public void editarInformacoes(DadosAtualizacaoAdministrador dados){
         atribuirSeNaoForNulo(dados.nome(), this::setNome);
         atribuirSeNaoForNulo(dados.cpf(), this::setCpf);
-        atribuirSeNaoForNulo(dados.email(), this::setEmail);
         atribuirSeNaoForNulo(dados.cargo(), this::setCargo);
         atribuirSeNaoForNulo(dados.celular(), this::setCelular);
+        this.usuario.editarInformacoes(dados.email(), dados.senha());
     }
 
     private <T> void atribuirSeNaoForNulo(T valor, Consumer<T> setter){
@@ -68,6 +62,7 @@ public class Administrador {
     }
 
     public void excluir(){
+        this.usuario.setLogin(null);
         this.ativo = false;
     }
 

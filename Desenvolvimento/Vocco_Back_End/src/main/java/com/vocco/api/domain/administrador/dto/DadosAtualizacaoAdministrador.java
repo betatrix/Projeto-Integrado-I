@@ -7,6 +7,7 @@ public record DadosAtualizacaoAdministrador(
         String nome,
         String cpf,
         String email,
+        String senha,
         String cargo,
         String celular,
         DadosAtualizacaoEndereco endereco) {

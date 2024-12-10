@@ -7,9 +7,10 @@ public record DadosDetalhamentoUsuario(
         Long id,
         String login,
         UsuarioRole role,
-        Boolean ativo
+        Boolean ativo,
+        String fotoDePerfil
 ) {
     public DadosDetalhamentoUsuario(Usuario usuario){
-        this(usuario.getId(), usuario.getLogin(), usuario.getRole(), usuario.getAtivo());
+        this(usuario.getId(), usuario.getLogin(), usuario.getRole(), usuario.getAtivo(), usuario.getFotoDePerfil());
     }
 }

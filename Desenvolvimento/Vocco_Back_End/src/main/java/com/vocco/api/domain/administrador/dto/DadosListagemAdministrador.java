@@ -7,9 +7,11 @@ public record DadosListagemAdministrador(
         String nome,
         String email,
         String cargo,
-        String celular
+        String celular,
+        Boolean ativo
 ) {
     public DadosListagemAdministrador(Administrador administrador){
-        this(administrador.getId(), administrador.getNome(), administrador.getEmail(), administrador.getCargo(), administrador.getCelular());
+        this(administrador.getId(), administrador.getNome(), administrador.getUsuario().getLogin(),
+                administrador.getCargo(), administrador.getCelular(), administrador.getAtivo());
     }
 }
